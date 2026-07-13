@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@theme {
+  /* Ayurvedic Deep Green Palette - extracted from product images */
+  --color-ayur-900: #1d2e26;
+  --color-ayur-800: #23382f;
+  --color-ayur-700: #2f4539;
+  --color-ayur-600: #3a5a48;
+  --color-ayur-500: #4a7a5e;
+  --color-ayur-400: #6a9a7e;
+  --color-ayur-300: #8aba9e;
+  --color-ayur-200: #b5d5c5;
+  --color-ayur-100: #daf0e2;
+  --color-ayur-50: #f0f8f3;
+
+  /* Warm Cream/Beige - extracted from product images */
+  --color-cream-50: #fafaf8;
+  --color-cream-100: #f5f3ef;
+  --color-cream-200: #efe8d8;
+  --color-cream-300: #e5dbc7;
+  --color-cream-400: #d4c5a8;
+  --color-cream-500: #c4b08a;
+  --color-cream-600: #8d7960;
+
+  /* Gold accent */
+  --color-gold-400: #d4a853;
+  --color-gold-500: #c49a38;
+  --color-gold-600: #a8822e;
+
+  /* Font families */
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+/* Custom utilities */
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-cream-50);
+    color: var(--color-ayur-900);
+    overflow-x: hidden;
+  }
+}
