@@ -1,11 +1,18 @@
 import { motion } from 'motion/react'
-import { useLanguage } from '../context/LanguageContext'
 
-const items = ['ticker1', 'ticker2', 'ticker3', 'ticker4', 'ticker5', 'ticker6', 'ticker7', 'ticker8']
+const items = [
+  '🌿 100% Natural',
+  '✦ Lab Tested',
+  '🌱 Organic Certified',
+  '💛 Handcrafted with Care',
+  '🕉 Ancient Formulations',
+  '🚚 Free Shipping 999+',
+  '♻ Sustainable Sourcing',
+  '🏆 Trusted by 50K+',
+]
 
 export default function Ticker() {
-  const { t } = useLanguage()
-  const allItems = [...items, ...items, ...items]
+  const duplicated = [...items, ...items, ...items]
 
   return (
     <div className="relative bg-ayur-800 border-y border-ayur-700/50 overflow-hidden py-4">
@@ -21,12 +28,12 @@ export default function Ticker() {
           },
         }}
       >
-        {allItems.map((key, i) => (
+        {duplicated.map((item, i) => (
           <span
             key={i}
             className="text-sm font-medium text-cream-200/40 tracking-wide flex-shrink-0"
           >
-            {t(key)}
+            {item}
           </span>
         ))}
       </motion.div>

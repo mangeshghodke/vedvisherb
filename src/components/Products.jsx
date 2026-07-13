@@ -1,19 +1,82 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { ShoppingBag, Star, ChevronRight } from 'lucide-react'
-import { useLanguage } from '../context/LanguageContext'
 
 const BASE = import.meta.env.BASE_URL
 
-const productKeys = [
-  { id: 1, nameKey: 'prod1Name', tagKey: 'prod1Tag', descKey: 'prod1Desc', image: `${BASE}images/IMG-20260713-WA0009.jpg`, rating: 4.8, category: 'Powders' },
-  { id: 2, nameKey: 'prod2Name', tagKey: 'prod2Tag', descKey: 'prod2Desc', image: `${BASE}images/IMG-20260713-WA0010.jpg`, rating: 4.9, category: 'Capsules' },
-  { id: 3, nameKey: 'prod3Name', tagKey: 'prod3Tag', descKey: 'prod3Desc', image: `${BASE}images/IMG-20260713-WA0011.jpg`, rating: 4.7, category: 'Oils' },
-  { id: 4, nameKey: 'prod4Name', tagKey: 'prod4Tag', descKey: 'prod4Desc', image: `${BASE}images/IMG-20260713-WA0012.jpg`, rating: 4.6, category: 'Skincare' },
-  { id: 5, nameKey: 'prod5Name', tagKey: 'prod5Tag', descKey: 'prod5Desc', image: `${BASE}images/IMG-20260713-WA0013.jpg`, rating: 4.8, category: 'Beverages' },
-  { id: 6, nameKey: 'prod6Name', tagKey: 'prod6Tag', descKey: 'prod6Desc', image: `${BASE}images/IMG-20260713-WA0014.jpg`, rating: 4.5, category: 'Skincare' },
-  { id: 7, nameKey: 'prod7Name', tagKey: 'prod7Tag', descKey: 'prod7Desc', image: `${BASE}images/IMG-20260713-WA0015.jpg`, rating: 4.7, category: 'Juices' },
-  { id: 8, nameKey: 'prod8Name', tagKey: 'prod8Tag', descKey: 'prod8Desc', image: `${BASE}images/IMG-20260713-WA0016.jpg`, rating: 4.6, category: 'Capsules' },
+const products = [
+  {
+    id: 1,
+    name: 'Triphala Powder',
+    tagline: 'Digestive Wellness',
+    description: 'A powerful blend of three ancient fruits — Amla, Haritaki, and Bibhitaki. Supports digestion and natural detoxification.',
+    image: `${BASE}images/IMG-20260713-WA0009.jpg`,
+    rating: 4.8,
+    category: 'Powders',
+  },
+  {
+    id: 2,
+    name: 'Ashwagandha Capsules',
+    tagline: 'Stress Relief',
+    description: 'Premium KSM-66 Ashwagandha root extract for stress relief, energy boost, and balanced cortisol levels.',
+    image: `${BASE}images/IMG-20260713-WA0010.jpg`,
+    rating: 4.9,
+    category: 'Capsules',
+  },
+  {
+    id: 3,
+    name: 'Brahmi Hair Oil',
+    tagline: 'Hair Nourishment',
+    description: 'Infused with Brahmi and Bhringraj herbs, this oil deeply nourishes the scalp and strengthens hair from root to tip.',
+    image: `${BASE}images/IMG-20260713-WA0011.jpg`,
+    rating: 4.7,
+    category: 'Oils',
+  },
+  {
+    id: 4,
+    name: 'Aloe Vera Gel',
+    tagline: 'Skin Rejuvenation',
+    description: 'Pure Aloe Vera gel with turmeric extract for glowing, hydrated skin. Multi-purpose natural skincare solution.',
+    image: `${BASE}images/IMG-20260713-WA0012.jpg`,
+    rating: 4.6,
+    category: 'Skincare',
+  },
+  {
+    id: 5,
+    name: 'Turmeric Latte Mix',
+    tagline: 'Immunity Booster',
+    description: 'Golden milk blend with organic turmeric, black pepper, cinnamon, and cardamom. Warm, healing, and delicious.',
+    image: `${BASE}images/IMG-20260713-WA0013.jpg`,
+    rating: 4.8,
+    category: 'Beverages',
+  },
+  {
+    id: 6,
+    name: 'Neem Face Wash',
+    tagline: 'Deep Cleansing',
+    description: 'Gentle herbal face wash with neem and tea tree oil. Purifies skin, unclogs pores, and controls excess oil.',
+    image: `${BASE}images/IMG-20260713-WA0014.jpg`,
+    rating: 4.5,
+    category: 'Skincare',
+  },
+  {
+    id: 7,
+    name: 'Giloy Juice',
+    tagline: 'Immunity Defense',
+    description: 'Fresh pressed Giloy stem juice — nature\'s immunity powerhouse. Helps fight infections and boosts metabolism.',
+    image: `${BASE}images/IMG-20260713-WA0015.jpg`,
+    rating: 4.7,
+    category: 'Juices',
+  },
+  {
+    id: 8,
+    name: 'Moringa Capsules',
+    tagline: 'Superfood Nutrition',
+    description: 'Concentrated Moringa leaf capsules packed with vitamins, minerals, and antioxidants for overall vitality.',
+    image: `${BASE}images/IMG-20260713-WA0016.jpg`,
+    rating: 4.6,
+    category: 'Capsules',
+  },
 ]
 
 const categories = ['All', 'Powders', 'Capsules', 'Oils', 'Skincare', 'Beverages', 'Juices']
@@ -21,14 +84,6 @@ const categories = ['All', 'Powders', 'Capsules', 'Oils', 'Skincare', 'Beverages
 export default function Products() {
   const [activeCategory, setActiveCategory] = useState('All')
   const [hoveredId, setHoveredId] = useState(null)
-  const { t } = useLanguage()
-
-  const products = productKeys.map((p) => ({
-    ...p,
-    name: t(p.nameKey),
-    tagline: t(p.tagKey),
-    description: t(p.descKey),
-  }))
 
   const filteredProducts =
     activeCategory === 'All'
@@ -46,16 +101,16 @@ export default function Products() {
           className="text-center mb-16"
         >
           <span className="inline-block px-4 py-1.5 rounded-full bg-ayur-100 text-ayur-600 text-xs font-semibold uppercase tracking-widest mb-4">
-            {t('productsBadge')}
+            Our Collection
           </span>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ayur-900 mb-4">
-            {t('productsTitle1')}
+            Nature's Finest
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-ayur-600 to-ayur-400">
-              {t('productsTitle2')}
+              Healing Remedies
             </span>
           </h2>
           <p className="text-ayur-700/60 max-w-2xl mx-auto text-lg">
-            {t('productsSub')}
+            Every product is a promise — pure ingredients, traditional formulations, and the healing power of Ayurveda.
           </p>
         </motion.div>
 
@@ -152,7 +207,7 @@ export default function Products() {
                     className="inline-flex items-center gap-1.5 text-sm font-semibold text-ayur-600 hover:text-ayur-800 transition-colors group/link"
                     whileHover={{ x: 4 }}
                   >
-                    {t('productsLearnMore')}
+                    Learn More
                     <ChevronRight className="w-3.5 h-3.5 group-hover/link:translate-x-0.5 transition-transform" />
                   </motion.a>
                 </div>

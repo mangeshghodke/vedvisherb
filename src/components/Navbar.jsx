@@ -1,26 +1,24 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
-import { Menu, X, Leaf, Languages } from 'lucide-react'
-import { useLanguage } from '../context/LanguageContext'
+import { Menu, X, Leaf } from 'lucide-react'
+
+const navLinks = [
+  { label: 'Home', href: '#home' },
+  { label: 'Products', href: '#products' },
+  { label: 'About', href: '#about' },
+  { label: 'Why Us', href: '#why-us' },
+  { label: 'Contact', href: '#contact' },
+]
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const { lang, toggleLanguage, t } = useLanguage()
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20)
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
-
-  const navLinks = [
-    { label: t('navHome'), href: '#home' },
-    { label: t('navProducts'), href: '#products' },
-    { label: t('navAbout'), href: '#about' },
-    { label: t('navWhyUs'), href: '#why-us' },
-    { label: t('navContact'), href: '#contact' },
-  ]
 
   return (
     <motion.nav
@@ -74,43 +72,25 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Right side: Language toggle + CTA */}
-          <div className="hidden md:flex items-center gap-3">
-            <motion.button
-              onClick={toggleLanguage}
-              className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-cream-100/70 hover:text-white border border-white/10 hover:border-white/20 rounded-full transition-all"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Languages className="w-4 h-4" />
-              {lang === 'en' ? 'मराठी' : 'English'}
-            </motion.button>
+          {/* CTA */}
+          <div className="hidden md:block">
             <motion.a
               href="#contact"
               className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-gold-400 to-gold-500 text-ayur-900 text-sm font-semibold rounded-full shadow-lg shadow-gold-500/25 hover:shadow-gold-500/40 transition-shadow"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
             >
-              {t('navCta')}
+              Get in Touch
             </motion.a>
           </div>
 
           {/* Mobile menu button */}
-          <div className="flex md:hidden items-center gap-2">
-            <motion.button
-              onClick={toggleLanguage}
-              className="p-2 text-white rounded-lg hover:bg-white/10 transition-colors"
-              whileTap={{ scale: 0.9 }}
-            >
-              <Languages className="w-4 h-4" />
-            </motion.button>
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="p-2 text-white rounded-lg hover:bg-white/10 transition-colors"
-            >
-              {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
-          </div>
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden p-2 text-white rounded-lg hover:bg-white/10 transition-colors"
+          >
+            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
         </div>
       </div>
 
@@ -146,7 +126,7 @@ export default function Navbar() {
                 transition={{ delay: navLinks.length * 0.05 }}
                 className="block mt-2 px-4 py-3 bg-gradient-to-r from-gold-400 to-gold-500 text-ayur-900 text-sm font-semibold rounded-lg text-center"
               >
-                {t('navCta')}
+                Get in Touch
               </motion.a>
             </div>
           </motion.div>
