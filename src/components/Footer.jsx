@@ -2,7 +2,7 @@ import { motion } from 'motion/react'
 import { Leaf, Globe, Heart, MessageSquare, Play } from 'lucide-react'
 
 const footerLinks = {
-  Products: ['Triphala Powder', 'Ashwagandha Capsules', 'Brahmi Hair Oil', 'Giloy Juice', 'Turmeric Latte'],
+  Products: ['Kumkumadi Facial Gel', 'Ashwagandha Capsules', 'Brahmi Hair Oil', 'Giloy Juice', 'Turmeric Latte'],
   Company: ['About Us', 'Our Story', 'Quality Promise', 'Sustainability', 'Careers'],
   Support: ['Contact Us', 'FAQs', 'Shipping Policy', 'Return Policy', 'Track Order'],
   Wellness: ['Ayurveda Guide', 'Health Blog', 'Ingredient Glossary', 'Dosha Quiz', 'Recipes'],

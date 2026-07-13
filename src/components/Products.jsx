@@ -7,12 +7,12 @@ const BASE = import.meta.env.BASE_URL
 const products = [
   {
     id: 1,
-    name: 'Triphala Powder',
-    tagline: 'Digestive Wellness',
-    description: 'A powerful blend of three ancient fruits — Amla, Haritaki, and Bibhitaki. Supports digestion and natural detoxification.',
+    name: 'Kumkumadi Facial Gel',
+    tagline: 'Glow & Clear Skin',
+    description: 'Reduces acne, pimples, and facial tanning. Naturally enhances skin radiance for a fresh, glowing complexion.',
     image: `${BASE}images/IMG-20260713-WA0009.jpg`,
     rating: 4.8,
-    category: 'Powders',
+    category: 'Skincare',
   },
   {
     id: 2,
