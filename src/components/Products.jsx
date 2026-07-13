@@ -16,142 +16,142 @@ const products = [
   },
   {
     id: 2,
-    name: 'Ashwagandha Capsules',
-    tagline: 'Stress Relief',
-    description: 'Premium KSM-66 Ashwagandha root extract for stress relief, energy boost, and balanced cortisol levels.',
+    name: 'Kumkumadi Gel with 24K Gold',
+    tagline: 'Luxury Skin Treatment',
+    description: 'Premium Kumkumadi gel enriched with 24K gold. Reduces dark spots, pigmentation, and signs of aging for radiant skin.',
     image: `${BASE}images/IMG-20260713-WA0010.jpg`,
     rating: 4.9,
-    category: 'Capsules',
+    category: 'Skincare',
   },
   {
     id: 3,
-    name: 'Brahmi Hair Oil',
-    tagline: 'Hair Nourishment',
-    description: 'Infused with Brahmi and Bhringraj herbs, this oil deeply nourishes the scalp and strengthens hair from root to tip.',
+    name: 'Kumkumadi Facial Gel',
+    tagline: 'Herbal Skin Glow',
+    description: 'Handmade Ayurvedic facial gel with traditional Kumkumadi formulation. Brightens complexion and heals damaged skin naturally.',
     image: `${BASE}images/IMG-20260713-WA0011.jpg`,
+    rating: 4.7,
+    category: 'Skincare',
+  },
+  {
+    id: 4,
+    name: 'Kumkumadi Mirage Beauty Oil',
+    tagline: 'Radiance Oil',
+    description: 'Luxurious beauty oil with Kumkumadi herbs. Deeply nourishes skin, reduces blemishes, and adds a natural golden glow.',
+    image: `${BASE}images/IMG-20260713-WA0012.jpg`,
+    rating: 4.6,
+    category: 'Oils',
+  },
+  {
+    id: 5,
+    name: 'Kumkumadi Mirage Beauty Oil',
+    tagline: '24K Gold Infused',
+    description: 'Premium beauty oil infused with 24K gold and Kumkumadi extract. Fights aging, hydrates deeply, and restores skin luminosity.',
+    image: `${BASE}images/IMG-20260713-WA0013.jpg`,
+    rating: 4.8,
+    category: 'Oils',
+  },
+  {
+    id: 6,
+    name: '36 Herbs Hair Oil',
+    tagline: 'Complete Hair Care',
+    description: 'Handmade hair oil with 36 Ayurvedic herbs. Controls hair fall, strengthens roots, and promotes thick, healthy hair growth.',
+    image: `${BASE}images/IMG-20260713-WA0014.jpg`,
     rating: 4.7,
     category: 'Oils',
   },
   {
-    id: 4,
-    name: 'Aloe Vera Gel',
-    tagline: 'Skin Rejuvenation',
-    description: 'Pure Aloe Vera gel with turmeric extract for glowing, hydrated skin. Multi-purpose natural skincare solution.',
-    image: `${BASE}images/IMG-20260713-WA0012.jpg`,
-    rating: 4.6,
-    category: 'Skincare',
-  },
-  {
-    id: 5,
-    name: 'Turmeric Latte Mix',
-    tagline: 'Immunity Booster',
-    description: 'Golden milk blend with organic turmeric, black pepper, cinnamon, and cardamom. Warm, healing, and delicious.',
-    image: `${BASE}images/IMG-20260713-WA0013.jpg`,
-    rating: 4.8,
-    category: 'Beverages',
-  },
-  {
-    id: 6,
-    name: 'Neem Face Wash',
-    tagline: 'Deep Cleansing',
-    description: 'Gentle herbal face wash with neem and tea tree oil. Purifies skin, unclogs pores, and controls excess oil.',
-    image: `${BASE}images/IMG-20260713-WA0014.jpg`,
-    rating: 4.5,
-    category: 'Skincare',
-  },
-  {
     id: 7,
-    name: 'Giloy Juice',
-    tagline: 'Immunity Defense',
-    description: 'Fresh pressed Giloy stem juice — nature\'s immunity powerhouse. Helps fight infections and boosts metabolism.',
+    name: 'Herbs Hair Oil',
+    tagline: 'Natural Hair Strength',
+    description: 'Traditional herbal hair oil blend. Nourishes scalp, reduces dandruff, and brings back natural shine and softness.',
     image: `${BASE}images/IMG-20260713-WA0015.jpg`,
-    rating: 4.7,
-    category: 'Juices',
+    rating: 4.6,
+    category: 'Oils',
   },
   {
     id: 8,
-    name: 'Moringa Capsules',
-    tagline: 'Superfood Nutrition',
-    description: 'Concentrated Moringa leaf capsules packed with vitamins, minerals, and antioxidants for overall vitality.',
+    name: 'Neem Tulsi Soap',
+    tagline: 'Anti-Acne Cleanser',
+    description: 'Combat acne and pimples naturally. Infused with Neem & Tulsi extracts to fight breakouts and give clear, radiant skin.',
     image: `${BASE}images/IMG-20260713-WA0016.jpg`,
-    rating: 4.6,
-    category: 'Capsules',
+    rating: 4.8,
+    category: 'Skincare',
   },
   {
     id: 9,
-    name: 'Kumkumadi Tailam',
-    tagline: 'Radiant Skin Oil',
-    description: 'Traditional Ayurvedic face oil with saffron and sandalwood. Reduces dark spots and evens out skin tone.',
+    name: 'Herbal Hair Oil',
+    tagline: 'No Chemicals, Pure Care',
+    description: 'Say goodbye to hair problems. No straighteners, no chemicals — just pure, beautiful, healthy hair the natural way.',
     image: `${BASE}images/IMG-20260713-WA0017.jpg`,
-    rating: 4.8,
+    rating: 4.7,
     category: 'Oils',
   },
   {
     id: 10,
-    name: 'Triphala Churna',
-    tagline: 'Digestive Balance',
-    description: 'Classic tri-blend powder that supports healthy digestion, detoxification, and regular bowel movements.',
+    name: 'Ayurvedic Hair Treatment',
+    tagline: 'Deep Root Nutrition',
+    description: 'Intensive hair treatment oil with rare Ayurvedic herbs. Repairs damaged hair, prevents split ends, and adds lasting volume.',
     image: `${BASE}images/IMG-20260713-WA0018.jpg`,
-    rating: 4.7,
-    category: 'Powders',
-  },
-  {
-    id: 11,
-    name: 'Amla Hair Serum',
-    tagline: 'Silky Strong Hair',
-    description: 'Lightweight serum enriched with Amla and coconut oil. Tames frizz, adds shine, and protects hair from damage.',
-    image: `${BASE}images/IMG-20260713-WA0019.jpg`,
     rating: 4.5,
     category: 'Oils',
   },
   {
+    id: 11,
+    name: 'Charcoal & Neem Facewash',
+    tagline: 'Deep Pore Cleansing',
+    description: 'Natural herbal facewash with Charcoal, Neem, and Turmeric extracts. Detoxifies skin, removes impurities, and controls oil.',
+    image: `${BASE}images/IMG-20260713-WA0019.jpg`,
+    rating: 4.7,
+    category: 'Skincare',
+  },
+  {
     id: 12,
-    name: 'Chyawanprash',
-    tagline: 'Daily Immunity',
-    description: 'Ancient Ayurvedic superfood jam with Amla and 40+ herbs. Boosts immunity, energy, and overall well-being.',
+    name: 'Kerala Herbal Shampoo',
+    tagline: 'Handmade Hair Wash',
+    description: 'Traditional Kerala herbal shampoo made with natural ingredients. Gentle cleansing, strengthens hair, and adds natural shine.',
     image: `${BASE}images/IMG-20260713-WA0020.jpg`,
-    rating: 4.9,
-    category: 'Beverages',
+    rating: 4.6,
+    category: 'Haircare',
   },
   {
     id: 13,
-    name: 'Sandalwood Face Pack',
-    tagline: 'Cooling & Brightening',
-    description: 'Pure sandalwood and multani mitti face pack. Cools skin, reduces pigmentation, and adds a natural glow.',
+    name: 'Kumkumadi Soap with 24K Gold',
+    tagline: 'Luxury Bath Bar',
+    description: 'Handmade Kumkumadi soap infused with 24K gold. Gently cleanses, moisturizes, and leaves skin soft, smooth, and glowing.',
     image: `${BASE}images/IMG-20260713-WA0021.jpg`,
-    rating: 4.6,
+    rating: 4.8,
     category: 'Skincare',
   },
   {
     id: 14,
-    name: 'Shatavari Powder',
-    tagline: 'Women\'s Wellness',
-    description: 'Organic Shatavari root powder for hormonal balance, reproductive health, and natural vitality in women.',
+    name: 'Herbs Hair Oil',
+    tagline: 'Handmade Herbal Blend',
+    description: 'Premium handmade hair oil with concentrated herbal extracts. Reduces hair fall, nourishes scalp, and boosts hair growth.',
     image: `${BASE}images/IMG-20260713-WA0022.jpg`,
-    rating: 4.7,
-    category: 'Powders',
-  },
-  {
-    id: 15,
-    name: 'Tulsi Drops',
-    tagline: 'Respiratory Care',
-    description: 'Concentrated Holy Basil extract drops. Supports respiratory health, relieves cold, and boosts immunity naturally.',
-    image: `${BASE}images/IMG-20260713-WA0023.jpg`,
-    rating: 4.8,
-    category: 'Juices',
-  },
-  {
-    id: 16,
-    name: 'Herbal Massage Oil',
-    tagline: 'Pain & Stress Relief',
-    description: 'Warming blend of sesame, eucalyptus, and camphor oils. Relieves muscle pain, joint stiffness, and tension.',
-    image: `${BASE}images/IMG-20260713-WA0024.jpg`,
     rating: 4.6,
     category: 'Oils',
   },
+  {
+    id: 15,
+    name: 'Ubtan Soap',
+    tagline: '3-in-1 Ritual',
+    description: 'Not just ubtan soap — it\'s a 3-in-1 ritual. Deep moisturization, gentle exfoliation, and natural brightening in one bar.',
+    image: `${BASE}images/IMG-20260713-WA0023.jpg`,
+    rating: 4.7,
+    category: 'Skincare',
+  },
+  {
+    id: 16,
+    name: 'Ayurvedic Skin Remedy',
+    tagline: 'Ethical Ayurvedic Care',
+    description: 'Improve your skin tone with essential ethical Ayurvedic remedies. Natural ingredients for healthier, more even-toned skin.',
+    image: `${BASE}images/IMG-20260713-WA0024.jpg`,
+    rating: 4.5,
+    category: 'Skincare',
+  },
 ]
 
-const categories = ['All', 'Powders', 'Capsules', 'Oils', 'Skincare', 'Beverages', 'Juices']
+const categories = ['All', 'Skincare', 'Oils', 'Haircare']
 const ITEMS_PER_PAGE = 8
 
 export default function Products() {
@@ -318,7 +318,6 @@ export default function Products() {
             viewport={{ once: true }}
             className="flex items-center justify-center gap-2 mt-12"
           >
-            {/* Previous button */}
             <motion.button
               onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
               disabled={currentPage === 1}
@@ -329,7 +328,6 @@ export default function Products() {
               <ChevronLeft className="w-4 h-4" />
             </motion.button>
 
-            {/* Page numbers */}
             {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
               <motion.button
                 key={page}
@@ -346,7 +344,6 @@ export default function Products() {
               </motion.button>
             ))}
 
-            {/* Next button */}
             <motion.button
               onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
               disabled={currentPage === totalPages}
