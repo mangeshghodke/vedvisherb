@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'motion/react'
+import { motion } from 'motion/react'
 import { ShoppingBag, Star, ChevronRight, ChevronLeft } from 'lucide-react'
 
 const BASE = import.meta.env.BASE_URL
@@ -157,7 +157,6 @@ const ITEMS_PER_PAGE = 8
 export default function Products() {
   const [activeCategory, setActiveCategory] = useState('All')
   const [currentPage, setCurrentPage] = useState(1)
-  const [hoveredId, setHoveredId] = useState(null)
 
   const filteredProducts =
     activeCategory === 'All'
@@ -232,83 +231,61 @@ export default function Products() {
         </div>
 
         {/* Products grid */}
-        <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <AnimatePresence mode="popLayout">
-            {paginatedProducts.map((product, index) => (
-              <motion.div
-                key={product.id}
-                layout
-                initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                transition={{
-                  type: 'spring',
-                  stiffness: 200,
-                  damping: 25,
-                  delay: index * 0.08,
-                }}
-                onMouseEnter={() => setHoveredId(product.id)}
-                onMouseLeave={() => setHoveredId(null)}
-                className="group relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:shadow-ayur-900/10 transition-all duration-500 border border-ayur-100/50"
-              >
-                <div className="relative aspect-[4/5] overflow-hidden bg-cream-100">
-                  <motion.img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-full object-cover"
-                    animate={{
-                      scale: hoveredId === product.id ? 1.08 : 1,
-                    }}
-                    transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ayur-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <motion.button
-                    className="absolute bottom-4 right-4 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100"
-                    animate={{ y: hoveredId === product.id ? 0 : 10 }}
-                    transition={{ duration: 0.3 }}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                  >
-                    <ShoppingBag className="w-4 h-4 text-ayur-800" />
-                  </motion.button>
-                  <div className="absolute top-3 left-3">
-                    <span className="px-2.5 py-1 bg-white/90 backdrop-blur-sm rounded-full text-[10px] font-semibold text-ayur-700 uppercase tracking-wider">
-                      {product.category}
-                    </span>
-                  </div>
+        <div key={currentPage} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {paginatedProducts.map((product, index) => (
+            <motion.div
+              key={product.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: index * 0.06 }}
+              className="group relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:shadow-ayur-900/10 transition-all duration-500 border border-ayur-100/50"
+            >
+              <div className="relative aspect-[4/5] overflow-hidden bg-cream-100">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-ayur-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute bottom-4 right-4 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+                  <ShoppingBag className="w-4 h-4 text-ayur-800" />
                 </div>
+                <div className="absolute top-3 left-3">
+                  <span className="px-2.5 py-1 bg-white/90 backdrop-blur-sm rounded-full text-[10px] font-semibold text-ayur-700 uppercase tracking-wider">
+                    {product.category}
+                  </span>
+                </div>
+              </div>
 
-                <div className="p-5">
-                  <div className="flex items-start justify-between mb-2">
-                    <div>
-                      <h3 className="font-display text-lg font-semibold text-ayur-900 group-hover:text-ayur-700 transition-colors">
-                        {product.name}
-                      </h3>
-                      <p className="text-xs text-ayur-500 font-medium uppercase tracking-wider">
-                        {product.tagline}
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-1 bg-cream-100 px-2 py-0.5 rounded-full">
-                      <Star className="w-3 h-3 fill-gold-400 text-gold-400" />
-                      <span className="text-xs font-semibold text-ayur-800">{product.rating}</span>
-                    </div>
+              <div className="p-5">
+                <div className="flex items-start justify-between mb-2">
+                  <div>
+                    <h3 className="font-display text-lg font-semibold text-ayur-900 group-hover:text-ayur-700 transition-colors">
+                      {product.name}
+                    </h3>
+                    <p className="text-xs text-ayur-500 font-medium uppercase tracking-wider">
+                      {product.tagline}
+                    </p>
                   </div>
-                  <p className="text-sm text-ayur-700/60 leading-relaxed line-clamp-2 mb-4">
-                    {product.description}
-                  </p>
-                  <motion.a
-                    href="#contact"
-                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-ayur-600 hover:text-ayur-800 transition-colors group/link"
-                    whileHover={{ x: 4 }}
-                  >
-                    Learn More
-                    <ChevronRight className="w-3.5 h-3.5 group-hover/link:translate-x-0.5 transition-transform" />
-                  </motion.a>
+                  <div className="flex items-center gap-1 bg-cream-100 px-2 py-0.5 rounded-full">
+                    <Star className="w-3 h-3 fill-gold-400 text-gold-400" />
+                    <span className="text-xs font-semibold text-ayur-800">{product.rating}</span>
+                  </div>
                 </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
+                <p className="text-sm text-ayur-700/60 leading-relaxed line-clamp-2 mb-4">
+                  {product.description}
+                </p>
+                <a
+                  href="#contact"
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-ayur-600 hover:text-ayur-800 transition-colors group/link"
+                >
+                  Learn More
+                  <ChevronRight className="w-3.5 h-3.5 group-hover/link:translate-x-0.5 transition-transform" />
+                </a>
+              </div>
+            </motion.div>
+          ))}
+        </div>
 
         {/* Pagination */}
         {totalPages > 1 && (
