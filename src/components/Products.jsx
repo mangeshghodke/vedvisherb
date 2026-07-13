@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
-import { ShoppingBag, Star, ChevronRight } from 'lucide-react'
+import { ShoppingBag, Star, ChevronRight, ChevronLeft } from 'lucide-react'
 
 const BASE = import.meta.env.BASE_URL
 
@@ -77,18 +77,103 @@ const products = [
     rating: 4.6,
     category: 'Capsules',
   },
+  {
+    id: 9,
+    name: 'Kumkumadi Tailam',
+    tagline: 'Radiant Skin Oil',
+    description: 'Traditional Ayurvedic face oil with saffron and sandalwood. Reduces dark spots and evens out skin tone.',
+    image: `${BASE}images/IMG-20260713-WA0017.jpg`,
+    rating: 4.8,
+    category: 'Oils',
+  },
+  {
+    id: 10,
+    name: 'Triphala Churna',
+    tagline: 'Digestive Balance',
+    description: 'Classic tri-blend powder that supports healthy digestion, detoxification, and regular bowel movements.',
+    image: `${BASE}images/IMG-20260713-WA0018.jpg`,
+    rating: 4.7,
+    category: 'Powders',
+  },
+  {
+    id: 11,
+    name: 'Amla Hair Serum',
+    tagline: 'Silky Strong Hair',
+    description: 'Lightweight serum enriched with Amla and coconut oil. Tames frizz, adds shine, and protects hair from damage.',
+    image: `${BASE}images/IMG-20260713-WA0019.jpg`,
+    rating: 4.5,
+    category: 'Oils',
+  },
+  {
+    id: 12,
+    name: 'Chyawanprash',
+    tagline: 'Daily Immunity',
+    description: 'Ancient Ayurvedic superfood jam with Amla and 40+ herbs. Boosts immunity, energy, and overall well-being.',
+    image: `${BASE}images/IMG-20260713-WA0020.jpg`,
+    rating: 4.9,
+    category: 'Beverages',
+  },
+  {
+    id: 13,
+    name: 'Sandalwood Face Pack',
+    tagline: 'Cooling & Brightening',
+    description: 'Pure sandalwood and multani mitti face pack. Cools skin, reduces pigmentation, and adds a natural glow.',
+    image: `${BASE}images/IMG-20260713-WA0021.jpg`,
+    rating: 4.6,
+    category: 'Skincare',
+  },
+  {
+    id: 14,
+    name: 'Shatavari Powder',
+    tagline: 'Women\'s Wellness',
+    description: 'Organic Shatavari root powder for hormonal balance, reproductive health, and natural vitality in women.',
+    image: `${BASE}images/IMG-20260713-WA0022.jpg`,
+    rating: 4.7,
+    category: 'Powders',
+  },
+  {
+    id: 15,
+    name: 'Tulsi Drops',
+    tagline: 'Respiratory Care',
+    description: 'Concentrated Holy Basil extract drops. Supports respiratory health, relieves cold, and boosts immunity naturally.',
+    image: `${BASE}images/IMG-20260713-WA0023.jpg`,
+    rating: 4.8,
+    category: 'Juices',
+  },
+  {
+    id: 16,
+    name: 'Herbal Massage Oil',
+    tagline: 'Pain & Stress Relief',
+    description: 'Warming blend of sesame, eucalyptus, and camphor oils. Relieves muscle pain, joint stiffness, and tension.',
+    image: `${BASE}images/IMG-20260713-WA0024.jpg`,
+    rating: 4.6,
+    category: 'Oils',
+  },
 ]
 
 const categories = ['All', 'Powders', 'Capsules', 'Oils', 'Skincare', 'Beverages', 'Juices']
+const ITEMS_PER_PAGE = 8
 
 export default function Products() {
   const [activeCategory, setActiveCategory] = useState('All')
+  const [currentPage, setCurrentPage] = useState(1)
   const [hoveredId, setHoveredId] = useState(null)
 
   const filteredProducts =
     activeCategory === 'All'
       ? products
       : products.filter((p) => p.category === activeCategory)
+
+  const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE)
+  const paginatedProducts = filteredProducts.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE
+  )
+
+  const handleCategoryChange = (cat) => {
+    setActiveCategory(cat)
+    setCurrentPage(1)
+  }
 
   return (
     <section id="products" className="relative py-24 md:py-32 bg-cream-50">
@@ -114,6 +199,7 @@ export default function Products() {
           </p>
         </motion.div>
 
+        {/* Category filters */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -124,7 +210,7 @@ export default function Products() {
           {categories.map((cat) => (
             <motion.button
               key={cat}
-              onClick={() => setActiveCategory(cat)}
+              onClick={() => handleCategoryChange(cat)}
               className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                 activeCategory === cat
                   ? 'bg-ayur-800 text-white shadow-lg shadow-ayur-800/30'
@@ -138,9 +224,17 @@ export default function Products() {
           ))}
         </motion.div>
 
+        {/* Products count */}
+        <div className="text-center mb-6">
+          <p className="text-sm text-ayur-600/60">
+            Showing {paginatedProducts.length} of {filteredProducts.length} products
+          </p>
+        </div>
+
+        {/* Products grid */}
         <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <AnimatePresence mode="popLayout">
-            {filteredProducts.map((product, index) => (
+            {paginatedProducts.map((product, index) => (
               <motion.div
                 key={product.id}
                 layout
@@ -215,6 +309,55 @@ export default function Products() {
             ))}
           </AnimatePresence>
         </motion.div>
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex items-center justify-center gap-2 mt-12"
+          >
+            {/* Previous button */}
+            <motion.button
+              onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+              disabled={currentPage === 1}
+              className="w-10 h-10 rounded-full flex items-center justify-center border border-ayur-200 text-ayur-700 hover:bg-ayur-100 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+              whileHover={{ scale: currentPage === 1 ? 1 : 1.1 }}
+              whileTap={{ scale: currentPage === 1 ? 1 : 0.9 }}
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </motion.button>
+
+            {/* Page numbers */}
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+              <motion.button
+                key={page}
+                onClick={() => setCurrentPage(page)}
+                className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold transition-all duration-300 ${
+                  currentPage === page
+                    ? 'bg-ayur-800 text-white shadow-lg shadow-ayur-800/30'
+                    : 'bg-white text-ayur-700 border border-ayur-200/50 hover:bg-ayur-50'
+                }`}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                {page}
+              </motion.button>
+            ))}
+
+            {/* Next button */}
+            <motion.button
+              onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+              disabled={currentPage === totalPages}
+              className="w-10 h-10 rounded-full flex items-center justify-center border border-ayur-200 text-ayur-700 hover:bg-ayur-100 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+              whileHover={{ scale: currentPage === totalPages ? 1 : 1.1 }}
+              whileTap={{ scale: currentPage === totalPages ? 1 : 0.9 }}
+            >
+              <ChevronRight className="w-4 h-4" />
+            </motion.button>
+          </motion.div>
+        )}
       </div>
     </section>
   )
