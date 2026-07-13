@@ -1,5 +1,6 @@
 import { motion } from 'motion/react'
 import { ArrowDown, Sparkles } from 'lucide-react'
+import { useLanguage } from '../context/LanguageContext'
 
 const floatingLeaves = Array.from({ length: 6 }, (_, i) => ({
   id: i,
@@ -10,6 +11,8 @@ const floatingLeaves = Array.from({ length: 6 }, (_, i) => ({
 }))
 
 export default function Hero() {
+  const { t } = useLanguage()
+
   return (
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background gradient */}
@@ -70,7 +73,7 @@ export default function Hero() {
           >
             <Sparkles className="w-3.5 h-3.5 text-gold-400" />
             <span className="text-xs font-medium text-cream-200 tracking-wide uppercase">
-              Ancient Wisdom, Modern Wellness
+              {t('heroBadge')}
             </span>
           </motion.div>
 
@@ -82,11 +85,11 @@ export default function Hero() {
               transition={{ type: 'spring', stiffness: 50, damping: 15, delay: 0.2 }}
               className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-[0.95] tracking-tight"
             >
-              Pure
+              {t('heroTitle1')}
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-ayur-300 to-ayur-200">
-                Ayurvedic
+                {t('heroTitle2')}
               </span>
-              <span className="text-gold-400 italic font-medium">Healing</span>
+              <span className="text-gold-400 italic font-medium">{t('heroTitle3')}</span>
             </motion.h1>
           </div>
 
@@ -97,8 +100,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="text-lg md:text-xl text-cream-200/70 max-w-xl leading-relaxed mb-10"
           >
-            Handcrafted from nature's finest ingredients, rooted in centuries-old Ayurvedic
-            traditions. Restore your balance, naturally.
+            {t('heroSub')}
           </motion.p>
 
           {/* CTA buttons */}
@@ -114,7 +116,7 @@ export default function Hero() {
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.97 }}
             >
-              Explore Products
+              {t('heroCta1')}
               <ArrowDown className="w-4 h-4" />
             </motion.a>
             <motion.a
@@ -123,7 +125,7 @@ export default function Hero() {
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.97 }}
             >
-              Our Story
+              {t('heroCta2')}
             </motion.a>
           </motion.div>
         </div>
@@ -136,7 +138,6 @@ export default function Hero() {
           className="hidden lg:flex absolute right-12 top-1/2 -translate-y-1/2 items-center justify-center"
         >
           <div className="relative w-80 h-80">
-            {/* Rotating ring */}
             <motion.div
               className="absolute inset-0 border border-white/5 rounded-full"
               animate={{ rotate: 360 }}
@@ -152,7 +153,6 @@ export default function Hero() {
               animate={{ rotate: 360 }}
               transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
             />
-            {/* Center symbol */}
             <div className="absolute inset-0 flex items-center justify-center">
               <span className="text-8xl opacity-20">🕉</span>
             </div>
@@ -166,7 +166,7 @@ export default function Hero() {
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
       >
-        <span className="text-[10px] text-white/30 uppercase tracking-[0.3em] font-medium">Scroll</span>
+        <span className="text-[10px] text-white/30 uppercase tracking-[0.3em] font-medium">{t('heroScroll')}</span>
         <div className="w-5 h-8 rounded-full border border-white/20 flex justify-center pt-1.5">
           <motion.div
             className="w-1 h-2 bg-white/40 rounded-full"
