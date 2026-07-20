@@ -74,7 +74,7 @@ export default function Navbar() {
             <img
               src={`${BASE}images/logo.jpeg`}
               alt="Vedvis Herb"
-              className="w-10 h-10 rounded-xl object-cover shadow-lg"
+              className="w-12 h-12 rounded-xl object-cover shadow-lg"
             />
             <div className="flex flex-col">
               <span className="font-display text-xl font-bold text-white leading-tight tracking-tight">

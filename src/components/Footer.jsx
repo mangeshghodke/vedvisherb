@@ -1,5 +1,7 @@
 import { motion } from 'motion/react'
-import { Leaf, Globe, Heart, MessageSquare, Play } from 'lucide-react'
+import { Globe, Heart, MessageSquare, Play } from 'lucide-react'
+
+const BASE = import.meta.env.BASE_URL
 
 const footerLinks = {
   Products: ['Kumkumadi Facial Gel', 'Ashwagandha Capsules', 'Brahmi Hair Oil', 'Giloy Juice', 'Turmeric Latte'],
@@ -63,10 +65,12 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-16">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
-            <div className="flex items-center gap-2.5 mb-4">
-              <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-ayur-400 to-ayur-600 flex items-center justify-center">
-                <Leaf className="w-4.5 h-4.5 text-white" strokeWidth={2.5} />
-              </div>
+            <div className="flex items-center gap-3 mb-4">
+              <img
+                src={`${BASE}images/logo.jpeg`}
+                alt="Vedvis Herb"
+                className="w-12 h-12 rounded-xl object-cover shadow-lg"
+              />
               <div>
                 <span className="font-display text-lg font-bold text-white leading-tight block">Vedvis</span>
                 <span className="text-[9px] text-ayur-400 uppercase tracking-[0.2em]">Herb</span>
