@@ -12,8 +12,8 @@ export default function ProductDetail() {
       <section className="min-h-screen flex items-center justify-center bg-cream-50 pt-24">
         <div className="text-center">
           <h2 className="font-display text-3xl font-bold text-ayur-900 mb-4">Product Not Found</h2>
-          <Link to="/" className="text-ayur-600 hover:text-ayur-800 font-semibold">
-            ← Back to Home
+          <Link to="/products" className="text-ayur-600 hover:text-ayur-800 font-semibold">
+            ← Back to Products
           </Link>
         </div>
       </section>
@@ -35,7 +35,7 @@ export default function ProductDetail() {
           className="mb-8"
         >
           <Link
-            to="/"
+            to="/products"
             className="inline-flex items-center gap-2 text-sm font-medium text-ayur-600 hover:text-ayur-800 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
