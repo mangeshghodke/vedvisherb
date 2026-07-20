@@ -51,7 +51,7 @@ const products = [
   },
   {
     id: 4,
-    name: 'Kumkumadi Mirage Beauty Oil',
+    name: 'Kumkumadi Miracle Oil',
     tagline: 'Natural Glow Oil',
     description: 'Provides natural glow on face. Reduces pimples and acne. Best for dry skin. Deeply nourishes and rejuvenates.',
     longDescription: 'Provides natural glow on face. Reduces pimples and acne. Best for dry skin. This luxurious Kumkumadi oil deeply nourishes and rejuvenates dry skin, bringing out a natural, healthy radiance. Regular use clears breakouts and keeps your skin soft, supple, and glowing.',
