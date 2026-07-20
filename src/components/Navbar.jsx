@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'motion/react'
 import { Menu, X, Leaf } from 'lucide-react'
 
 const navLinks = [
-  { label: 'Home', section: 'hero' },
+  { label: 'Home', section: 'home' },
   { label: 'Products', to: '/products' },
   { label: 'About', section: 'about' },
   { label: 'Why Us', section: 'why-us' },
