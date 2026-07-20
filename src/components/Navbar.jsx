@@ -42,6 +42,7 @@ export default function Navbar() {
       return
     }
     document.getElementById(section)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    window.history.pushState(null, '', '#' + section)
   }
 
   const handleLogoClick = (e) => {
