@@ -82,6 +82,7 @@ export default function Footer() {
                   <motion.a
                     key={s.label}
                     href="#"
+                    onClick={(e) => e.preventDefault()}
                     className="w-9 h-9 rounded-lg bg-white/5 border border-white/8 flex items-center justify-center hover:bg-white/10 transition-colors"
                     whileHover={{ y: -2 }}
                     aria-label={s.label}
@@ -102,6 +103,7 @@ export default function Footer() {
                   <li key={link}>
                     <a
                       href="#"
+                      onClick={(e) => e.preventDefault()}
                       className="text-xs text-cream-200/35 hover:text-cream-200/70 transition-colors"
                     >
                       {link}
@@ -120,7 +122,7 @@ export default function Footer() {
           </p>
           <div className="flex gap-6">
             {['Privacy Policy', 'Terms of Service', 'Cookie Policy'].map((link) => (
-              <a key={link} href="#" className="text-xs text-cream-200/25 hover:text-cream-200/50 transition-colors">
+              <a key={link} href="#" onClick={(e) => e.preventDefault()} className="text-xs text-cream-200/25 hover:text-cream-200/50 transition-colors">
                 {link}
               </a>
             ))}

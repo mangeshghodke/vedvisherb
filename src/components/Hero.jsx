@@ -110,6 +110,10 @@ export default function Hero() {
           >
             <motion.a
               href="#products"
+              onClick={(e) => {
+                e.preventDefault()
+                document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' })
+              }}
               className="inline-flex items-center gap-2.5 px-7 py-3.5 bg-gradient-to-r from-ayur-400 to-ayur-500 text-white font-semibold rounded-full shadow-xl shadow-ayur-500/30 hover:shadow-ayur-500/50 transition-all"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.97 }}
@@ -119,6 +123,10 @@ export default function Hero() {
             </motion.a>
             <motion.a
               href="#about"
+              onClick={(e) => {
+                e.preventDefault()
+                document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })
+              }}
               className="inline-flex items-center gap-2 px-7 py-3.5 border border-white/20 text-white font-semibold rounded-full hover:bg-white/5 backdrop-blur-sm transition-all"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.97 }}

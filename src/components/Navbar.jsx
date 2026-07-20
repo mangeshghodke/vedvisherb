@@ -1,24 +1,64 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'motion/react'
 import { Menu, X, Leaf } from 'lucide-react'
 
 const navLinks = [
-  { label: 'Home', href: '#home' },
-  { label: 'Products', href: '#products' },
-  { label: 'About', href: '#about' },
-  { label: 'Why Us', href: '#why-us' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', section: 'hero' },
+  { label: 'Products', section: 'products' },
+  { label: 'About', section: 'about' },
+  { label: 'Why Us', section: 'why-us' },
+  { label: 'Contact', section: 'contact' },
 ]
+
+function scrollToSection(id) {
+  const el = document.getElementById(id)
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  } else {
+    window.location.hash = ''
+    window.location.href = window.location.pathname
+    setTimeout(() => {
+      const retry = document.getElementById(id)
+      if (retry) retry.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }, 100)
+  }
+}
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const location = useLocation()
+  const isHome = location.pathname === '/' || location.pathname === '/vedvisherb/' || location.pathname === ''
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20)
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  const handleNavClick = useCallback((section) => (e) => {
+    e.preventDefault()
+    setIsOpen(false)
+    if (!isHome) {
+      window.location.hash = ''
+      window.location.href = window.location.pathname
+      setTimeout(() => scrollToSection(section), 200)
+    } else {
+      scrollToSection(section)
+    }
+  }, [isHome])
+
+  const handleLogoClick = useCallback((e) => {
+    e.preventDefault()
+    setIsOpen(false)
+    if (!isHome) {
+      window.location.hash = ''
+      window.location.href = window.location.pathname
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }, [isHome])
 
   return (
     <motion.nav
@@ -35,7 +75,8 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-18 md:h-20">
           {/* Logo */}
           <motion.a
-            href="#home"
+            href="/"
+            onClick={handleLogoClick}
             className="flex items-center gap-2.5 group"
             whileHover={{ scale: 1.02 }}
           >
@@ -56,8 +97,9 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
               <motion.a
-                key={link.href}
-                href={link.href}
+                key={link.section}
+                href={`#${link.section}`}
+                onClick={handleNavClick(link.section)}
                 className="relative px-4 py-2 text-sm font-medium text-cream-100/80 hover:text-white transition-colors"
                 whileHover={{ y: -1 }}
               >
@@ -76,6 +118,7 @@ export default function Navbar() {
           <div className="hidden md:block">
             <motion.a
               href="#contact"
+              onClick={handleNavClick('contact')}
               className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-gold-400 to-gold-500 text-ayur-900 text-sm font-semibold rounded-full shadow-lg shadow-gold-500/25 hover:shadow-gold-500/40 transition-shadow"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
@@ -107,9 +150,9 @@ export default function Navbar() {
             <div className="px-4 py-4 space-y-1">
               {navLinks.map((link, i) => (
                 <motion.a
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
+                  key={link.section}
+                  href={`#${link.section}`}
+                  onClick={handleNavClick(link.section)}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.05 }}
@@ -120,7 +163,7 @@ export default function Navbar() {
               ))}
               <motion.a
                 href="#contact"
-                onClick={() => setIsOpen(false)}
+                onClick={handleNavClick('contact')}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: navLinks.length * 0.05 }}
