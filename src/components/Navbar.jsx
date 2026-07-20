@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'motion/react'
-import { Menu, X, Leaf } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
+
+const BASE = import.meta.env.BASE_URL
 
 const navLinks = [
   { label: 'Home', section: 'home' },
@@ -69,9 +71,11 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-18 md:h-20">
           {/* Logo */}
           <Link to="/" onClick={handleLogoClick} className="flex items-center gap-2.5 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-ayur-400 to-ayur-600 flex items-center justify-center shadow-lg">
-              <Leaf className="w-5 h-5 text-white" strokeWidth={2.5} />
-            </div>
+            <img
+              src={`${BASE}images/logo.jpeg`}
+              alt="Vedvis Herb"
+              className="w-10 h-10 rounded-xl object-cover shadow-lg"
+            />
             <div className="flex flex-col">
               <span className="font-display text-xl font-bold text-white leading-tight tracking-tight">
                 Vedvis
