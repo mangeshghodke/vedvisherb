@@ -774,7 +774,7 @@ export default function Dashboard() {
                           <Link
                             to={`/product/${p.id}`}
                             title="View on site"
-                            className="p-2 rounded-lg hover:bg-ayur-50 text-ayur-600"
+                            className="p-3 -m-1 rounded-lg hover:bg-ayur-50 text-ayur-600"
                           >
                             <Eye className="w-4 h-4" />
                           </Link>
@@ -782,7 +782,7 @@ export default function Dashboard() {
                             type="button"
                             onClick={() => startEdit(p)}
                             title="Edit"
-                            className="p-2 rounded-lg hover:bg-ayur-50 text-ayur-700"
+                            className="p-3 -m-1 rounded-lg hover:bg-ayur-50 text-ayur-700"
                           >
                             <Pencil className="w-4 h-4" />
                           </button>
@@ -791,7 +791,7 @@ export default function Dashboard() {
                             onClick={() => remove(p)}
                             title="Delete"
                             disabled={busy}
-                            className="p-2 rounded-lg hover:bg-red-50 text-red-600 disabled:opacity-40"
+                            className="p-3 -m-1 rounded-lg hover:bg-red-50 text-red-600 disabled:opacity-40"
                           >
                             <Trash2 className="w-4 h-4" />
                           </button>

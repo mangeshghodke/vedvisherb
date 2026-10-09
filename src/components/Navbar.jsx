@@ -93,7 +93,7 @@ export default function Navbar() {
                 <Link
                   key={link.to}
                   to={link.to}
-                  className="relative px-4 py-2 text-sm font-medium text-cream-100/80 hover:text-white transition-colors"
+                  className="relative px-4 py-3 text-sm font-medium text-cream-100/80 hover:text-white transition-colors"
                 >
                   {link.label}
                   <motion.span
@@ -108,7 +108,7 @@ export default function Navbar() {
                   key={link.section}
                   href={`#${link.section}`}
                   onClick={handleSectionClick(link.section)}
-                  className="relative px-4 py-2 text-sm font-medium text-cream-100/80 hover:text-white transition-colors"
+                  className="relative px-4 py-3 text-sm font-medium text-cream-100/80 hover:text-white transition-colors"
                   whileHover={{ y: -1 }}
                 >
                   {link.label}

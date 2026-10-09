@@ -83,7 +83,7 @@ export default function ProductsPage() {
                 key={cat}
                 type="button"
                 onClick={() => handleCategory(cat)}
-                className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                className={`px-5 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
                   activeCategory === cat
                     ? 'bg-ayur-800 text-white shadow-lg shadow-ayur-800/30'
                     : 'bg-white text-ayur-700 hover:bg-ayur-50 border border-ayur-200/50'

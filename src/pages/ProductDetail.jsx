@@ -94,7 +94,7 @@ export default function ProductDetail() {
         >
           <Link
             to="/products"
-            className="inline-flex items-center gap-2 text-sm font-medium text-ayur-600 hover:text-ayur-800 transition-colors"
+            className="inline-flex items-center gap-2 py-2 text-sm font-medium text-ayur-600 hover:text-ayur-800 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Products

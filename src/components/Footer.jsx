@@ -57,7 +57,7 @@ export default function Footer() {
                     key={s.label}
                     href="#"
                     onClick={(e) => e.preventDefault()}
-                    className="w-9 h-9 rounded-lg bg-white/5 border border-white/8 flex items-center justify-center hover:bg-white/10 transition-colors"
+                    className="shrink-0 w-11 h-11 rounded-lg bg-white/5 border border-white/8 flex items-center justify-center hover:bg-white/10 transition-colors"
                     whileHover={{ y: -2 }}
                     aria-label={s.label}
                   >
@@ -76,7 +76,7 @@ export default function Footer() {
                 <li key={link.to}>
                   <Link
                     to={link.to}
-                    className="text-xs text-cream-200/35 hover:text-cream-200/70 transition-colors"
+                    className="inline-block py-2 text-xs text-cream-200/35 hover:text-cream-200/70 transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -95,7 +95,7 @@ export default function Footer() {
                     <a
                       href="#"
                       onClick={(e) => e.preventDefault()}
-                      className="text-xs text-cream-200/35 hover:text-cream-200/70 transition-colors"
+                      className="inline-block py-2 text-xs text-cream-200/35 hover:text-cream-200/70 transition-colors"
                     >
                       {link}
                     </a>
@@ -118,12 +118,12 @@ export default function Footer() {
                 e.preventDefault()
                 navigate('/dashboard')
               }}
-              className="text-xs text-cream-200/20 hover:text-cream-200/40 transition-colors"
+              className="inline-block py-2 text-xs text-cream-200/20 hover:text-cream-200/40 transition-colors"
             >
               Admin
             </a>
             {['Privacy Policy', 'Terms of Service', 'Cookie Policy'].map((link) => (
-              <a key={link} href="#" onClick={(e) => e.preventDefault()} className="text-xs text-cream-200/25 hover:text-cream-200/50 transition-colors">
+              <a key={link} href="#" onClick={(e) => e.preventDefault()} className="inline-block py-2 text-xs text-cream-200/25 hover:text-cream-200/50 transition-colors">
                 {link}
               </a>
             ))}
