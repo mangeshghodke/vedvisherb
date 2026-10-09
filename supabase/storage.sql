@@ -1,21 +1,24 @@
 -- Product image storage
 -- Run in Supabase SQL Editor. Safe to run more than once.
+--
+-- NOTE: you must also have run schema.sql (or admin.sql) first, because the
+-- write policies below reference the public.admins table.
 
 -- ---------------------------------------------------------------- bucket
 -- Public bucket: product photos are not sensitive, and this lets visitors
 -- load them without a session. Access is still limited by the policies below.
-insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
-values (
-  'product-images',
-  'product-images',
-  true,
-  5242880, -- 5 MB ceiling (we compress to ~60 KB before upload anyway)
-  array['image/jpeg', 'image/png', 'image/webp', 'image/avif']
-)
-on conflict (id) do update set
-  public = excluded.public,
-  file_size_limit = excluded.file_size_limit,
-  allowed_mime_types = excluded.allowed_mime_types;
+--
+-- Split into insert-then-update so a pre-existing bucket is repaired rather
+-- than aborting the whole script.
+insert into storage.buckets (id, name, public)
+values ('product-images', 'product-images', true)
+on conflict (id) do nothing;
+
+update storage.buckets
+set public = true,
+    file_size_limit = 5242880, -- 5 MB ceiling (we compress to ~60 KB first)
+    allowed_mime_types = array['image/jpeg', 'image/png', 'image/webp', 'image/avif']
+where id = 'product-images';
 
 -- ---------------------------------------------------------------- read
 -- Anyone may read product images.
