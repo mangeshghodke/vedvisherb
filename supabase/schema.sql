@@ -61,16 +61,32 @@ create table if not exists public.admins (
 
 alter table public.admins enable row level security;
 
+-- SECURITY DEFINER helper. It runs as the table owner, so it bypasses RLS on
+-- public.admins. Without this, a policy on admins that queries admins makes
+-- Postgres raise "42P17: infinite recursion detected in policy", which breaks
+-- every product write.
+drop function if exists public.is_admin();
+
+create or replace function public.is_admin()
+returns boolean
+language sql
+stable
+security definer
+set search_path = public
+as $$
+  select exists (
+    select 1 from public.admins where email = auth.jwt() ->> 'email'
+  );
+$$;
+
+revoke all on function public.is_admin() from public;
+grant execute on function public.is_admin() to authenticated;
+
 drop policy if exists "admins can read admins" on public.admins;
 create policy "admins can read admins"
   on public.admins for select
   to authenticated
-  using (
-    exists (
-      select 1 from public.admins a
-      where a.email = (auth.jwt() ->> 'email')
-    )
-  );
+  using (public.is_admin());
 
 -- Add your admin email (change this before running):
 insert into public.admins (email) values ('YOUR-EMAIL@example.com')
@@ -80,40 +96,20 @@ drop policy if exists "admins can insert products" on public.products;
 create policy "admins can insert products"
   on public.products for insert
   to authenticated
-  with check (
-    exists (
-      select 1 from public.admins a
-      where a.email = (auth.jwt() ->> 'email')
-    )
-  );
+  with check (public.is_admin());
 
 drop policy if exists "admins can update products" on public.products;
 create policy "admins can update products"
   on public.products for update
   to authenticated
-  using (
-    exists (
-      select 1 from public.admins a
-      where a.email = (auth.jwt() ->> 'email')
-    )
-  )
-  with check (
-    exists (
-      select 1 from public.admins a
-      where a.email = (auth.jwt() ->> 'email')
-    )
-  );
+  using (public.is_admin())
+  with check (public.is_admin());
 
 drop policy if exists "admins can delete products" on public.products;
 create policy "admins can delete products"
   on public.products for delete
   to authenticated
-  using (
-    exists (
-      select 1 from public.admins a
-      where a.email = (auth.jwt() ->> 'email')
-    )
-  );
+  using (public.is_admin());
 
 -- ------------------------------------------------------------------- admin
 -- Create the admin account in Dashboard > Authentication > Users > Add user
