@@ -5,13 +5,16 @@
  *
  * Run this after replacing public/images/logo.jpeg. Requires Pillow:
  *   pip install Pillow
+ *
+ * Set PYTHON=/path/to/python if it is not on PATH.
  */
 import fs from 'node:fs'
 import path from 'node:path'
 import { spawnSync } from 'node:child_process'
 
 const SRC = path.resolve('public/images/logo.jpeg')
-const PY = process.env.PYTHON || '/home/mangesh/anaconda3/bin/python3'
+// Fall back to whatever `python3` is on PATH; the user can override with PYTHON.
+const PY = process.env.PYTHON || 'python3'
 
 if (!fs.existsSync(SRC)) {
   console.error(`Missing ${path.relative(process.cwd(), SRC)}`)
