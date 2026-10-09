@@ -181,11 +181,17 @@ export function isStorageUrl(image) {
  *   - Supabase Storage URL  https://.../product-images/products/17-soap.jpg
  *   - legacy filename       IMG-20260713-WA0009.jpg  -> served from /images
  *   - inline data URL       data:image/jpeg;base64,...  (pre-Storage rows)
+ *
+ * Only http(s) and data:image are passed through. Anything else (javascript:,
+ * vbscript:, protocol-relative //evil.com) is treated as a filename so it
+ * resolves to our own /images path instead of an attacker-controlled origin.
  */
 export function resolveImage(image) {
   if (!image) return ''
-  if (image.startsWith('data:') || image.startsWith('http')) return image
-  return `${BASE}images/${image}`
+  const value = String(image)
+  if (/^https?:\/\//i.test(value)) return value
+  if (/^data:image\//i.test(value)) return value
+  return `${BASE}images/${value.replace(/^\/+/, '')}`
 }
 
 export function withImageUrls(list) {

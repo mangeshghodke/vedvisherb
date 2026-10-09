@@ -31,6 +31,32 @@ describe('resolveImage', () => {
     expect(resolveImage(d)).toBe(d)
   })
 
+  it('rejects script-bearing and protocol-relative URLs', () => {
+    // Anything not http(s)/data:image must fall back to our own /images path,
+    // so a malicious value cannot point the <img> at another origin.
+    for (const hostile of [
+      'javascript:alert(1)',
+      'JavaScript:alert(1)',
+      'vbscript:msgbox(1)',
+      '//evil.example.com/x.jpg',
+      '../../secret.jpg',
+    ]) {
+      const out = resolveImage(hostile)
+      expect(out.startsWith('//')).toBe(false)
+      expect(out).not.toMatch(/^[a-z]+:/i)
+      expect(out.startsWith('/images/')).toBe(true)
+    }
+  })
+
+  it('allows http and https from any origin', () => {
+    expect(resolveImage('http://cdn.example.com/a.jpg')).toBe(
+      'http://cdn.example.com/a.jpg'
+    )
+    expect(resolveImage('https://cdn.example.com/a.jpg')).toBe(
+      'https://cdn.example.com/a.jpg'
+    )
+  })
+
   it('returns empty string for a missing image', () => {
     expect(resolveImage('')).toBe('')
     expect(resolveImage(null)).toBe('')

@@ -49,29 +49,76 @@ create policy "products are readable by everyone"
   on public.products for select
   using (published = true);
 
--- Writes require the dashboard password entered by an admin.
--- The app turns that password into a Supabase session via signInWithPassword,
--- so writes are allowed only for signed-in admins.
+-- Writes are restricted to emails listed in public.admins.
+--
+-- Do NOT use "to authenticated with check (true)" here: that grants write
+-- access to every registered account, not just your admin. Anyone who can
+-- sign up would be able to delete your catalog.
+create table if not exists public.admins (
+  email      text primary key,
+  created_at timestamptz default now()
+);
+
+alter table public.admins enable row level security;
+
+drop policy if exists "admins can read admins" on public.admins;
+create policy "admins can read admins"
+  on public.admins for select
+  to authenticated
+  using (
+    exists (
+      select 1 from public.admins a
+      where a.email = (auth.jwt() ->> 'email')
+    )
+  );
+
+-- Add your admin email (change this before running):
+insert into public.admins (email) values ('YOUR-EMAIL@example.com')
+on conflict (email) do nothing;
+
 drop policy if exists "admins can insert products" on public.products;
 create policy "admins can insert products"
   on public.products for insert
   to authenticated
-  with check (true);
+  with check (
+    exists (
+      select 1 from public.admins a
+      where a.email = (auth.jwt() ->> 'email')
+    )
+  );
 
 drop policy if exists "admins can update products" on public.products;
 create policy "admins can update products"
   on public.products for update
   to authenticated
-  using (true)
-  with check (true);
+  using (
+    exists (
+      select 1 from public.admins a
+      where a.email = (auth.jwt() ->> 'email')
+    )
+  )
+  with check (
+    exists (
+      select 1 from public.admins a
+      where a.email = (auth.jwt() ->> 'email')
+    )
+  );
 
 drop policy if exists "admins can delete products" on public.products;
 create policy "admins can delete products"
   on public.products for delete
   to authenticated
-  using (true);
+  using (
+    exists (
+      select 1 from public.admins a
+      where a.email = (auth.jwt() ->> 'email')
+    )
+  );
 
 -- ------------------------------------------------------------------- admin
--- One admin account. Create it in Dashboard > Authentication > Users > Add user
--- (tick "Auto Confirm User"), then set a password. Use that email + password
--- in the dashboard login screen.
+-- Create the admin account in Dashboard > Authentication > Users > Add user
+-- (tick "Auto Confirm User"), using the same email you inserted above.
+--
+-- Also disable public sign-ups, otherwise anyone can register an account:
+--   Dashboard > Authentication > Sign In / Providers > turn off Email
+-- See supabase/admin.sql for the SQL alternative.

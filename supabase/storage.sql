@@ -25,25 +25,52 @@ create policy "product images are publicly readable"
   using (bucket_id = 'product-images');
 
 -- --------------------------------------------------------------- write
--- Only signed-in admins may add, replace, or remove images.
+-- Only emails listed in public.admins may upload, replace, or remove images.
+--
+-- Requires the admins table from supabase/schema.sql. Using
+-- "to authenticated" alone would let any registered account overwrite images.
 drop policy if exists "admins can upload product images" on storage.objects;
 create policy "admins can upload product images"
   on storage.objects for insert
   to authenticated
-  with check (bucket_id = 'product-images');
+  with check (
+    bucket_id = 'product-images'
+    and exists (
+      select 1 from public.admins a
+      where a.email = (auth.jwt() ->> 'email')
+    )
+  );
 
 drop policy if exists "admins can update product images" on storage.objects;
 create policy "admins can update product images"
   on storage.objects for update
   to authenticated
-  using (bucket_id = 'product-images')
-  with check (bucket_id = 'product-images');
+  using (
+    bucket_id = 'product-images'
+    and exists (
+      select 1 from public.admins a
+      where a.email = (auth.jwt() ->> 'email')
+    )
+  )
+  with check (
+    bucket_id = 'product-images'
+    and exists (
+      select 1 from public.admins a
+      where a.email = (auth.jwt() ->> 'email')
+    )
+  );
 
 drop policy if exists "admins can delete product images" on storage.objects;
 create policy "admins can delete product images"
   on storage.objects for delete
   to authenticated
-  using (bucket_id = 'product-images');
+  using (
+    bucket_id = 'product-images'
+    and exists (
+      select 1 from public.admins a
+      where a.email = (auth.jwt() ->> 'email')
+    )
+  );
 
 -- ------------------------------------------------------------------ notes
 -- Images are stored under products/<product-id>-<slug>.<ext> and the public

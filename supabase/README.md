@@ -28,11 +28,20 @@ This creates the `products` table and the security rules. The rules mean:
 ## 3. Create the admin account
 
 1. **Authentication** → **Users** → **Add user**
-2. Enter an email and password
+2. Enter the **same email you put in `schema.sql`/`admin.sql`** (the one
+   listed in the `admins` table)
 3. Tick **Auto Confirm User** (important — otherwise login fails)
 4. **Save**
 
-Those are the credentials your client types into the dashboard login screen.
+Then **lock it down**:
+
+- Run [`admin.sql`](./admin.sql) in the SQL Editor — this restricts all writes
+  to emails in the `admins` table
+- **Authentication → Sign In / Providers → turn off "Email"** to stop anyone
+  registering their own account
+
+Without both steps, anyone can sign up and, because the original policies
+allowed any authenticated user to write, delete your entire catalog.
 
 ## 4. Create the image bucket
 
@@ -168,6 +177,22 @@ For local deploys from your machine, `.env` is read automatically — just run
 **Login says "Invalid login credentials"**
 The user was not auto-confirmed, or the password is wrong. Re-check
 Authentication → Users.
+
+**Login works but saving fails with a row-level security error**
+Your email is not in the `admins` table. Run `admin.sql`, or insert it:
+
+```sql
+insert into public.admins (email) values ('you@example.com')
+on conflict (email) do nothing;
+```
+
+**Upload fails with "Bucket not found"**
+`storage.sql` has not been run. SQL Editor → paste it → Run.
+
+**Rate limiting is weak on the free tier**
+Supabase throttles login attempts per IP, but 30 rapid wrong-password attempts
+in testing produced only one 429. Use a long, unique admin password rather than
+relying on throttling.
 
 **Products page is empty**
 The table exists but has no rows. Add products through the dashboard.
