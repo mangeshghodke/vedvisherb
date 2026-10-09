@@ -6,7 +6,7 @@ const items = [
   '🌱 Organic Certified',
   '💛 Handcrafted with Care',
   '🕉 Ancient Formulations',
-  '🚚 Free Shipping 999+',
+  '🍃 Handmade in Small Batches',
   '♻ Sustainable Sourcing',
   '🏆 Trusted by 50K+',
 ]

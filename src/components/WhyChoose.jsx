@@ -1,5 +1,5 @@
 import { motion } from 'motion/react'
-import { Check, Truck, RotateCcw, HeadphonesIcon } from 'lucide-react'
+import { Check, Leaf, RotateCcw, HeadphonesIcon } from 'lucide-react'
 
 const reasons = [
   {
@@ -9,15 +9,15 @@ const reasons = [
     accent: 'from-emerald-400 to-emerald-600',
   },
   {
-    icon: Truck,
-    title: 'Free Shipping',
-    description: 'Free delivery on orders above ₹999. Swift dispatch within 24 hours.',
+    icon: Leaf,
+    title: 'Handmade in Small Batches',
+    description: 'Every batch is prepared by hand with care, following traditional Ayurvedic methods.',
     accent: 'from-blue-400 to-blue-600',
   },
   {
     icon: RotateCcw,
-    title: '30-Day Returns',
-    description: 'Not satisfied? Return within 30 days for a complete refund.',
+    title: 'Traditionally Sourced',
+    description: 'Ingredients ethically harvested from local farmers and trusted suppliers.',
     accent: 'from-amber-400 to-amber-600',
   },
   {

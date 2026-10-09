@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'motion/react'
 import { Menu, X } from 'lucide-react'
@@ -18,7 +18,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [hidden, setHidden] = useState(false)
   const location = useLocation()
-  const lastScrollY = { current: 0 }
+  const lastScrollY = useRef(0)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,7 +40,7 @@ export default function Navbar() {
     e.preventDefault()
     setIsOpen(false)
     if (location.pathname !== '/') {
-      window.location.href = '/' + '#' + section
+      window.location.href = BASE + '#' + section
       return
     }
     document.getElementById(section)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -51,7 +51,7 @@ export default function Navbar() {
     e.preventDefault()
     setIsOpen(false)
     if (location.pathname !== '/') {
-      window.location.href = '/'
+      window.location.href = BASE
     } else {
       window.scrollTo({ top: 0, behavior: 'smooth' })
     }

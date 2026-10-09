@@ -1,0 +1,375 @@
+[
+  {
+    "id": 1,
+    "name": "Kumkumadi Facial Gel",
+    "tagline": "Glow & Clear Skin",
+    "description": "Reduces acne, pimple. Reduces tanning and brings natural glow that stays longer on face.",
+    "longDescription": "Reduces acne, pimple. Reduces tanning and brings natural glow that stays longer on face.",
+    "image": "IMG-20260713-WA0009.jpg",
+    "price": 350,
+    "weight": "50g",
+    "rating": 4.8,
+    "reviews": 0,
+    "category": "Skincare",
+    "benefits": [
+      "Reduces acne & pimples",
+      "Removes tanning",
+      "Brings natural glow",
+      "Long-lasting effect"
+    ],
+    "ingredients": [
+      "KumkumadiTailam",
+      "Saffron",
+      "Sandalwood",
+      "Aloe Vera",
+      "Turmeric"
+    ],
+    "howToUse": "Apply a small amount on clean face and neck after washing. Massage gently in circular motions. Use twice daily for best results."
+  },
+  {
+    "id": 2,
+    "name": "Kumkumadi Gel with 24K Gold",
+    "tagline": "Gold-Infused Glow",
+    "description": "24K gold particles make face glow. Removes tanning, acne, and pimple completely. Anti-aging formulation for youthful skin.",
+    "longDescription": "Enriched with real 24K gold particles, this Kumkumadi gel gives your face a natural, luminous glow. It completely removes tanning, acne, and pimples while working as a powerful anti-aging formulation. Gold particles deeply penetrate the skin to stimulate collagen production, keeping your skin firm, youthful, and radiant.",
+    "image": "IMG-20260713-WA0010.jpg",
+    "price": 400,
+    "weight": "50g | 25g - ₹200",
+    "rating": 4.9,
+    "reviews": 0,
+    "category": "Skincare",
+    "benefits": [
+      "Infused with 24K gold",
+      "Complete acne & pimple removal",
+      "Removes tanning",
+      "Anti-aging formulation",
+      "Natural face glow"
+    ],
+    "ingredients": [
+      "24K Gold",
+      "KumkumadiTailam",
+      "Saffron",
+      "Sandalwood",
+      "Turmeric",
+      "Vitamin E"
+    ],
+    "howToUse": "Apply a thin layer on clean face and neck after washing. Massage gently in upward circular motions until absorbed. Use twice daily for best results."
+  },
+  {
+    "id": 3,
+    "name": "Kumkumadi Facial Gel",
+    "tagline": "Herbal Skin Glow",
+    "description": "Handmade Ayurvedic facial gel with traditional Kumkumadi formulation. Brightens complexion and heals damaged skin naturally.",
+    "longDescription": "Handmade Ayurvedic facial gel with traditional Kumkumadi formulation. Brightens complexion and heals damaged skin naturally.",
+    "image": "IMG-20260713-WA0011.jpg",
+    "price": 299,
+    "weight": "50g",
+    "rating": 4.7,
+    "reviews": 0,
+    "category": "Skincare",
+    "benefits": [
+      "Handmade formulation",
+      "Brightens complexion",
+      "Heals damaged skin",
+      "Suitable for all skin types"
+    ],
+    "ingredients": [
+      "KumkumadiTailam",
+      "Manjistha",
+      "Saffron",
+      "Chandan",
+      "Glycerin"
+    ],
+    "howToUse": "Take a pea-sized amount and apply on face. Massage gently in upward strokes. Use morning and night."
+  },
+  {
+    "id": 4,
+    "name": "Kumkumadi Miracle Beauty Oil",
+    "tagline": "Natural Glow Oil",
+    "description": "Provides natural glow on face. Reduces pimples and acne. Best for dry skin. Deeply nourishes and rejuvenates.",
+    "longDescription": "Provides natural glow on face. Reduces pimples and acne. Best for dry skin. This luxurious Kumkumadi oil deeply nourishes and rejuvenates dry skin, bringing out a natural, healthy radiance. Regular use clears breakouts and keeps your skin soft, supple, and glowing.",
+    "image": "IMG-20260713-WA0012.jpg",
+    "price": 650,
+    "weight": "10ml",
+    "rating": 4.6,
+    "reviews": 0,
+    "category": "Oils",
+    "benefits": [
+      "Natural face glow",
+      "Reduces pimples & acne",
+      "Best for dry skin",
+      "Deep nourishment",
+      "Rejuvenates skin"
+    ],
+    "ingredients": [
+      "Sesame Oil",
+      "Saffron",
+      "KumkumadiTailam",
+      "Lodhra",
+      "Manjistha",
+      "Vitamin E"
+    ],
+    "howToUse": "Take 2-3 drops on fingertips. Apply on clean face and massage gently in circular motions. Use at night for best results."
+  },
+  {
+    "id": 5,
+    "name": "Kumkumadi Miracle Beauty Oil 24K Gold",
+    "tagline": "Gold Glow Therapy",
+    "description": "Retains natural glow on face. Completely removes pimple, acne. Reduces wrinkles, melasma, and pigmentation. Anti-aging gold therapy.",
+    "longDescription": "Infused with real 24K gold, this Kumkumadi oil retains natural glow on face while completely removing pimples and acne. Reduces wrinkles, melasma, and pigmentation for youthful, radiant skin. Gold particles work deeply to repair and rejuvenate, giving you a flawless complexion.",
+    "image": "IMG-20260713-WA0013.jpg",
+    "price": 800,
+    "weight": "10ml",
+    "rating": 4.8,
+    "reviews": 0,
+    "category": "Oils",
+    "benefits": [
+      "Retains natural glow",
+      "Removes pimple & acne",
+      "Reduces wrinkles",
+      "Reduces melasma & pigmentation",
+      "24K gold therapy"
+    ],
+    "ingredients": [
+      "24K Gold",
+      "Sesame Oil",
+      "KumkumadiTailam",
+      "Saffron",
+      "Lodhra",
+      "Chandan",
+      "Vitamin E"
+    ],
+    "howToUse": "Warm 2-3 drops between palms. Press gently onto clean face and neck. Use nightly for best results."
+  },
+  {
+    "id": 8,
+    "name": "Neem Tulsi Soap",
+    "tagline": "Anti-Acne Cleanser",
+    "description": "Combat acne and pimples naturally. Infused with Neem & Tulsi extracts to fight breakouts and give clear, radiant skin.",
+    "longDescription": "Combat acne and pimples naturally. Infused with Neem & Tulsi extracts to fight breakouts and give clear, radiant skin.",
+    "image": "IMG-20260713-WA0016.jpg",
+    "price": 149,
+    "weight": "75g",
+    "rating": 4.8,
+    "reviews": 0,
+    "category": "Skincare",
+    "benefits": [
+      "Fights acne & pimples",
+      "Purifies skin",
+      "Controls oil",
+      "Antibacterial"
+    ],
+    "ingredients": [
+      "Neem Extract",
+      "Tulsi Extract",
+      "Glycerin",
+      "Coconut Oil",
+      "Natural Lye"
+    ],
+    "howToUse": "Lather between wet palms. Apply on face and body. Rinse thoroughly. Use daily."
+  },
+  {
+    "id": 9,
+    "name": "Herbal Hair Oil",
+    "tagline": "3 Variants — 21, 36 & 51 Herbs",
+    "description": "Choose from 21 Herbs, 36 Herbs, or 51 Herbs Ayurvedic hair oil. Each variant is crafted through traditional Taila Pak Vidhi — slow-infusing herbs in coconut, sesame, and castor oil base for maximum potency.",
+    "longDescription": "Handmade Ayurvedic hair oils prepared through the traditional Taila Pak Vidhi method — herbs are slowly infused in a base of coconut, sesame, and castor oils to preserve healing potency.\n\n21 Herbs Hair Oil — formulated with Bhringraj, Amla, Brahmi, Hibiscus, Neem, Methi, Curry Leaves, Jatamansi, and more. Reduces hair loss, nourishes scalp, adds natural shine, and leaves hair soft and silky. Also effective against dandruff and scalp irritation.\n\n36 Herbs Hair Oil — a richer blend including Sandalwood, Henna, Rose Petal, Manjistha, Kapoor Kachri, Nagarmotha, Liquorice, and 36 powerful herbs in total. Stops hair loss, stimulates new hair follicle growth, eliminates dandruff, improves blood circulation to the scalp, and prevents split ends and dryness.\n\n51 Herbs Hair Oil — the most comprehensive formulation with all 36 herbs plus Moringa, Kalonji (Black Seed), Jojoba, Basil, Jasmine, Tea Tree, Rosemary, and Lavender. Addresses all hair problems — regrows hair follicles, removes dandruff, prevents premature greying and white hairs, reduces thinning, adds volume, and slows hair aging.",
+    "image": "IMG-20260713-WA0017.jpg",
+    "price": 329,
+    "weight": "200ml",
+    "rating": 4.7,
+    "reviews": 0,
+    "category": "Oils",
+    "benefits": [
+      "21 Herbs — reduces hair loss, natural shine, soft silky hair",
+      "36 Herbs — stops hair loss, grows new follicles, anti-dandruff",
+      "51 Herbs — all hair problems, prevents greying, adds volume",
+      "Taila Pak Vidhi — traditional slow-infusion method",
+      "No chemicals, parabens, or sulfates"
+    ],
+    "ingredients": [
+      "21 Herbs: Bhringraj, Amla, Brahmi, Hibiscus, Neem, Methi, Curry Leaves, Jatamansi, Aloe Vera, Tulsi, Reetha, Shikakai, Kalonji, Coconut Oil, Sesame Oil, Castor Oil, Olive Oil, Jojoba Oil, Nagarmotha, Mulethi, Vitamin E",
+      "36 Herbs: all 21 + Sandalwood, Henna, Rose Petal, Manjistha, Kapoor Kachri, Harad, Baheda, Orange Peel, Lemon Peel, Camphor, Karanj Oil, Indigo Leaf, Catechu, Coffee, Tea Leaf",
+      "51 Herbs: all 36 + Moringa, Kalonji Oil, Basil, Jasmine, Tea Tree, Rosemary, Lavender, Grapeseed Oil, Almond Oil, Wheat Germ Oil, Flaxseed Oil, Sunflower Oil, Datura, Mandukaparni, Vach"
+    ],
+    "howToUse": "Warm oil slightly. Apply on scalp and massage gently in circular motions for 5–10 minutes to improve blood circulation. Leave for 1–2 hours or overnight for deep nourishment. Wash with mild herbal shampoo. Use 2–3 times per week for best results."
+  },
+  {
+    "id": 10,
+    "name": "Moisturizer",
+    "tagline": "4 Variants Available",
+    "description": "Choose from Saffron, Lotus, Rose, or Jasmine moisturizer. Deeply hydrates, nourishes, and keeps skin soft and glowing all day.",
+    "longDescription": "Available in 4 variants — Saffron Moisturizer for brightening, Lotus Moisturizer for soothing, Rose Moisturizer for hydration, and Jasmine Moisturizer for rejuvenation. Each variant provides deep moisture and lasting softness.",
+    "image": "IMG-20260713-WA0018.jpg",
+    "price": 150,
+    "weight": "100ml",
+    "rating": 4.5,
+    "reviews": 0,
+    "category": "Skincare",
+    "benefits": [
+      "Deep hydration",
+      "Nourishes skin",
+      "Soft & glowing skin",
+      "4 variant options"
+    ],
+    "ingredients": [
+      "Varies by variant — Saffron",
+      "Lotus",
+      "Rose",
+      "Jasmine",
+      "Aloe Vera",
+      "Vitamin E"
+    ],
+    "howToUse": "Apply on clean face and neck after washing. Massage gently in upward strokes until absorbed. Use twice daily."
+  },
+  {
+    "id": 11,
+    "name": "Face Wash",
+    "tagline": "3 Variants Available",
+    "description": "Choose from Kumkumadi, Charcoal, or Neem Tulsi face wash. Each variant deeply cleanses, removes impurities, and keeps skin fresh and glowing.",
+    "longDescription": "Available in 3 variants — Kumkumadi Face Wash for natural glow, Charcoal Face Wash for deep pore detox, and Neem Tulsi Face Wash for acne-free skin. Each variant gently cleanses and nourishes your skin.",
+    "image": "IMG-20260713-WA0019.jpg",
+    "price": 150,
+    "weight": "50ml each",
+    "rating": 4.7,
+    "reviews": 0,
+    "category": "Skincare",
+    "benefits": [
+      "Deep cleansing",
+      "Removes impurities",
+      "Controls oil",
+      "Natural glow"
+    ],
+    "ingredients": [
+      "Varies by variant — KumkumadiTailam",
+      "Activated Charcoal",
+      "Neem",
+      "Tulsi",
+      "Aloe Vera"
+    ],
+    "howToUse": "Take small amount on wet palm. Lather and massage on face in circular motions. Rinse thoroughly with water. Use twice daily."
+  },
+  {
+    "id": 12,
+    "name": "Kerala Herbal Shampoo",
+    "tagline": "Traditional Amla-Reetha-Shikakai Formula",
+    "description": "A traditional Kerala-style herbal shampoo made with Amla, Reetha (soapnut), and Shikakai — the classic Ayurvedic trio that gently cleanses using natural saponins without stripping your scalp of natural oils.",
+    "longDescription": "Inspired by the age-old Kerala tradition of washing hair with herbal powders, this handmade shampoo brings together Amla (Indian gooseberry), Reetha (soapnut), and Shikakai (\"fruit for hair\") — nature's original cleansers. Shikakai gently cleanses and detangles while maintaining the scalp's natural pH balance. Reetha provides natural saponins that create a mild lather to remove dirt and excess oil. Amla, the richest natural source of Vitamin C, strengthens hair follicles, nourishes roots, and helps prevent premature greying. Hibiscus flower deeply conditions and promotes hair growth. Neem and Aloe Vera soothe the scalp and fight dandruff, while Fenugreek and Brahmi strengthen hair from root to tip. Free from sulfates, parabens, and synthetic chemicals — just pure, handmade Kerala tradition in every wash.",
+    "image": "IMG-20260713-WA0020.jpg",
+    "price": 249,
+    "weight": "200ml",
+    "rating": 4.6,
+    "reviews": 0,
+    "category": "Haircare",
+    "benefits": [
+      "Traditional Kerala Amla-Reetha-Shikakai formula",
+      "Gentle cleansing with natural saponins",
+      "Strengthens hair follicles & reduces fall",
+      "Prevents premature greying",
+      "Fights dandruff & soothes scalp",
+      "No sulfates, parabens, or chemicals"
+    ],
+    "ingredients": [
+      "Amla (Indian Gooseberry)",
+      "Reetha (Soapnut)",
+      "Shikakai (Fruit for Hair)",
+      "Hibiscus Flower",
+      "Neem",
+      "Aloe Vera",
+      "Fenugreek (Methi)",
+      "Brahmi",
+      "Curry Leaves",
+      "Coconut Milk",
+      "Rose Water"
+    ],
+    "howToUse": "Wet hair thoroughly. Shake bottle well and apply an adequate amount to scalp and hair. Massage gently for 2–3 minutes, working into a mild lather. Leave on for 1–2 minutes for deeper nourishment. Rinse thoroughly with water. Follow with conditioner if needed. Suitable for daily use."
+  },
+  {
+    "id": 13,
+    "name": "Kumkumadi Soap with 24K Gold",
+    "tagline": "Luxury Bath Bar",
+    "description": "Handmade Kumkumadi soap infused with 24K gold. Gently cleanses, moisturizes, and leaves skin soft, smooth, and glowing.",
+    "longDescription": "Handmade Kumkumadi soap infused with 24K gold. Gently cleanses, moisturizes, and leaves skin soft, smooth, and glowing.",
+    "image": "IMG-20260713-WA0021.jpg",
+    "price": 199,
+    "weight": "100g",
+    "rating": 4.8,
+    "reviews": 0,
+    "category": "Skincare",
+    "benefits": [
+      "Infused with 24K gold",
+      "Moisturizing",
+      "Gentle cleansing",
+      "Natural glow"
+    ],
+    "ingredients": [
+      "KumkumadiTailam",
+      "24K Gold",
+      "Glycerin",
+      "Coconut Oil",
+      "Saffron"
+    ],
+    "howToUse": "Lather soap between wet palms or with a loofah. Apply on body. Rinse thoroughly."
+  },
+  {
+    "id": 15,
+    "name": "Ubtan Soap",
+    "tagline": "3-in-1 Ritual",
+    "description": "Traditional ubtan soap for deep moisturization, gentle exfoliation, and natural brightening all in one bar.",
+    "longDescription": "Traditional ubtan soap for deep moisturization, gentle exfoliation, and natural brightening all in one bar.",
+    "image": "IMG-20260713-WA0023.jpg",
+    "price": 169,
+    "weight": "100g",
+    "rating": 4.7,
+    "reviews": 0,
+    "category": "Skincare",
+    "benefits": [
+      "Deep moisturization",
+      "Gentle exfoliation",
+      "Natural brightening",
+      "Traditional ubtan recipe"
+    ],
+    "ingredients": [
+      "Turmeric",
+      "Sandalwood",
+      "Gram Flour",
+      "Rose Water",
+      "Ghee"
+    ],
+    "howToUse": "Lather with water. Apply on face and body. Massage gently to exfoliate. Rinse thoroughly."
+  },
+  {
+    "id": 16,
+    "name": "Kumkumadi Toner Oil",
+    "tagline": "Saffron-Infused Glow Oil",
+    "description": "A classical Ayurvedic Kumkumadi Tailam made with Kashmiri saffron and 25+ botanicals in a cold-pressed sesame oil base. Brightens complexion, evens skin tone, and reduces dark spots naturally.",
+    "longDescription": "Kumkumadi Tailam is a revered Ayurvedic formulation described in the classical texts of Bhavaprakasha and Ashtanga Hridayam. Made with Kashmiri saffron (Kumkuma), sandalwood, manjistha, liquorice, lotus, vetiver, and 20+ other herbs in a cold-pressed sesame oil base, it has been traditionally used as a daily facial oil to brighten complexion, even out skin tone, reduce dark spots and pigmentation, and restore natural radiance. Clinical studies show ~10% improvement in skin tone, ~13% reduction in redness, and improved firmness within 15 days of daily use without compromising skin barrier function.",
+    "image": "IMG-20260713-WA0024.jpg",
+    "price": 500,
+    "weight": "10ml",
+    "rating": 4.5,
+    "reviews": 0,
+    "category": "Oils",
+    "benefits": [
+      "Brightens dull skin & evens tone",
+      "Reduces dark spots & pigmentation",
+      "Fades acne marks & blemishes",
+      "Anti-aging — reduces fine lines",
+      "Deeply nourishes without greasiness",
+      "Improves skin firmness & elasticity"
+    ],
+    "ingredients": [
+      "Kashmiri Saffron (Kumkuma)",
+      "Sandalwood (Chandana)",
+      "Red Sandalwood (Rakta Chandana)",
+      "Manjistha (Indian Madder)",
+      "Liquorice (Yashtimadhu)",
+      "Lotus (Kamal)",
+      "Vetiver (Ushira)",
+      "Cold-Pressed Sesame Oil",
+      "Goat Milk",
+      "Rose Water"
+    ],
+    "howToUse": "Cleanse face and pat dry. Take 2–3 drops onto palm, warm between hands, and gently massage onto face and neck using upward circular strokes for 2–3 minutes. Avoid eye area. Leave overnight and wash off in the morning with a mild cleanser. Use nightly for best results. For oily skin, use 2–3 drops, 3–4 nights a week. Always patch-test before first use."
+  }
+]

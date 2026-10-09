@@ -1,10 +1,11 @@
 import { motion } from 'motion/react'
+import { Link, useNavigate } from 'react-router-dom'
 import { Globe, Heart, MessageSquare, Play } from 'lucide-react'
+import { useCatalog } from '../context/useCatalog'
 
 const BASE = import.meta.env.BASE_URL
 
 const footerLinks = {
-  Products: ['Kumkumadi Facial Gel', 'Ashwagandha Capsules', 'Brahmi Hair Oil', 'Giloy Juice', 'Turmeric Latte'],
   Company: ['About Us', 'Our Story', 'Quality Promise', 'Sustainability', 'Careers'],
   Support: ['Contact Us', 'FAQs', 'Shipping Policy', 'Return Policy', 'Track Order'],
   Wellness: ['Ayurveda Guide', 'Health Blog', 'Ingredient Glossary', 'Dosha Quiz', 'Recipes'],
@@ -18,8 +19,11 @@ const socialLinks = [
 ]
 
 export default function Footer() {
+  const navigate = useNavigate()
+  const { products } = useCatalog()
+  const productLinks = products.slice(0, 5).map((p) => ({ label: p.name, to: `/product/${p.id}` }))
   return (
-    <footer className="relative bg-ayur-900 pt-20 pb-6 overflow-hidden">
+    <footer className="relative bg-ayur-900 pt-16 pb-6 overflow-hidden">
       {/* Top gradient border */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-ayur-400/20 to-transparent" />
 
@@ -27,40 +31,6 @@ export default function Footer() {
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-ayur-500/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Newsletter banner */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="relative bg-gradient-to-r from-ayur-800 to-ayur-700 rounded-2xl p-8 md:p-12 mb-16 overflow-hidden"
-        >
-          <div className="absolute top-0 right-0 w-64 h-64 bg-ayur-500/10 rounded-full blur-3xl" />
-          <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div>
-              <h3 className="font-display text-2xl md:text-3xl font-bold text-white mb-2">
-                Join Our Wellness Community
-              </h3>
-              <p className="text-cream-200/50 text-sm">
-                Get early access to new products, Ayurvedic tips, and exclusive offers.
-              </p>
-            </div>
-            <div className="flex w-full md:w-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 md:w-72 px-5 py-3 bg-white/[0.06] border border-white/10 rounded-l-full text-white text-sm placeholder:text-cream-200/25 focus:outline-none focus:border-ayur-400/50"
-              />
-              <motion.button
-                className="px-6 py-3 bg-gradient-to-r from-gold-400 to-gold-500 text-ayur-900 font-semibold rounded-r-full text-sm whitespace-nowrap"
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-              >
-                Subscribe
-              </motion.button>
-            </div>
-          </div>
-        </motion.div>
-
         {/* Links grid */}
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-16">
           {/* Brand */}
@@ -98,6 +68,23 @@ export default function Footer() {
             </div>
           </div>
 
+          {/* Live product links from the catalog */}
+          <div>
+            <h4 className="font-display text-sm font-semibold text-white mb-4">Products</h4>
+            <ul className="space-y-2.5">
+              {productLinks.map((link) => (
+                <li key={link.to}>
+                  <Link
+                    to={link.to}
+                    className="text-xs text-cream-200/35 hover:text-cream-200/70 transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
           {/* Link columns */}
           {Object.entries(footerLinks).map(([title, links]) => (
             <div key={title}>
@@ -125,6 +112,16 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Vedvis Herb. All rights reserved.
           </p>
           <div className="flex gap-6">
+            <a
+              href={`${BASE}dashboard`}
+              onClick={(e) => {
+                e.preventDefault()
+                navigate('/dashboard')
+              }}
+              className="text-xs text-cream-200/20 hover:text-cream-200/40 transition-colors"
+            >
+              Admin
+            </a>
             {['Privacy Policy', 'Terms of Service', 'Cookie Policy'].map((link) => (
               <a key={link} href="#" onClick={(e) => e.preventDefault()} className="text-xs text-cream-200/25 hover:text-cream-200/50 transition-colors">
                 {link}

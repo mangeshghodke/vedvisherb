@@ -10,6 +10,7 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 import ProductDetail from './pages/ProductDetail'
 import ProductsPage from './pages/ProductsPage'
+import Dashboard from './pages/Dashboard'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -34,7 +35,7 @@ function HomePage() {
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <ScrollToTop />
       <div className="min-h-screen bg-cream-50">
         <Navbar />
@@ -42,6 +43,7 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/products" element={<ProductsPage />} />
           <Route path="/product/:id" element={<ProductDetail />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
         <Footer />
       </div>
