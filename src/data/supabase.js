@@ -65,7 +65,36 @@ function toRow(p) {
   }
 }
 
-/** Fetch all published products, newest sort order respected. */
+/**
+ * Turn a PostgREST error into something actionable in the UI toast.
+ * The raw codes (PGRST116, 42501, 42P17) mean very different things.
+ */
+function describe(err) {
+  const code = err?.code || ''
+  const msg = err?.message || 'Unknown error'
+  switch (code) {
+    case '42501':
+      return 'Permission denied by the database. Your email is probably not listed in the admins table — re-run supabase/admin.sql.'
+    case '42P17':
+      return 'The database has a recursive admin policy. Re-run supabase/admin.sql.'
+    case 'PGRST116':
+      return 'The update matched no rows — the product may have been deleted in another tab.'
+    case '23505':
+      return 'That value conflicts with an existing record.'
+    case '23503':
+      return 'A related record is missing.'
+    default:
+      return code ? `${msg} (${code})` : msg
+  }
+}
+
+function fail(action, err) {
+  const e = new Error(describe(err))
+  e.cause = err
+  e.action = action
+  throw e
+}
+
 export async function fetchProducts() {
   if (!supabase) return catalog
   const { data, error } = await supabase
@@ -75,7 +104,7 @@ export async function fetchProducts() {
     .order('sort_order', { ascending: true })
     .order('id', { ascending: true })
 
-  if (error) throw new Error(error.message)
+  if (error) fail('load', error)
   return (data ?? []).map(fromRow)
 }
 
@@ -86,7 +115,7 @@ export async function createProduct(p) {
     .insert(toRow(p))
     .select()
     .single()
-  if (error) throw new Error(error.message)
+  if (error) fail('create', error)
   return fromRow(data)
 }
 
@@ -98,14 +127,14 @@ export async function updateProduct(id, p) {
     .eq('id', id)
     .select()
     .single()
-  if (error) throw new Error(error.message)
+  if (error) fail('update', error)
   return fromRow(data)
 }
 
 export async function deleteProduct(id) {
   if (!supabase) throw new Error('Supabase is not configured')
   const { error } = await supabase.from('products').delete().eq('id', id)
-  if (error) throw new Error(error.message)
+  if (error) fail('delete', error)
 }
 
 // ------------------------------------------------------------------- auth
@@ -155,7 +184,7 @@ export async function uploadImage(dataUrl, { productId, name } = {}) {
     cacheControl: '31536000', // 1 year — filenames are unique per upload
     upsert: false,
   })
-  if (error) throw new Error(error.message)
+  if (error) fail('upload', error)
 
   return supabase.storage.from(BUCKET).getPublicUrl(path).data.publicUrl
 }

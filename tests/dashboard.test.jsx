@@ -10,46 +10,50 @@ import { createRoot } from 'react-dom/client'
 import { MemoryRouter } from 'react-router-dom'
 
 // --- Supabase mock -------------------------------------------------------
+// Pristine factory so each test starts from known state. Re-slicing the
+// live array leaked mutations between tests.
+const initialRows = () => [
+  {
+    id: 1,
+    name: 'Kumkumadi Facial Gel',
+    tagline: 'Glow & Clear Skin',
+    category: 'Skincare',
+    price: 350,
+    weight: '50g',
+    description: 'Short copy',
+    long_description: 'Long copy',
+    how_to_use: 'Apply twice daily',
+    benefits: ['Reduces acne'],
+    ingredients: ['Saffron'],
+    image: 'IMG-20260713-WA0009.jpg',
+    rating: 4.8,
+    reviews: 0,
+    sort_order: 0,
+    published: true,
+  },
+  {
+    id: 2,
+    name: 'Herbal Hair Oil',
+    tagline: 'Hair Care',
+    category: 'Oils',
+    price: 329,
+    weight: '200ml',
+    description: 'Oil copy',
+    long_description: '',
+    how_to_use: '',
+    benefits: [],
+    ingredients: [],
+    image:
+      'https://test.supabase.co/storage/v1/object/public/product-images/products/2-hair-oil.jpg',
+    rating: 4.7,
+    reviews: 0,
+    sort_order: 1,
+    published: true,
+  },
+]
+
 const state = {
-  rows: [
-    {
-      id: 1,
-      name: 'Kumkumadi Facial Gel',
-      tagline: 'Glow & Clear Skin',
-      category: 'Skincare',
-      price: 350,
-      weight: '50g',
-      description: 'Short copy',
-      long_description: 'Long copy',
-      how_to_use: 'Apply twice daily',
-      benefits: ['Reduces acne'],
-      ingredients: ['Saffron'],
-      image: 'IMG-20260713-WA0009.jpg',
-      rating: 4.8,
-      reviews: 0,
-      sort_order: 0,
-      published: true,
-    },
-    {
-      id: 2,
-      name: 'Herbal Hair Oil',
-      tagline: 'Hair Care',
-      category: 'Oils',
-      price: 329,
-      weight: '200ml',
-      description: 'Oil copy',
-      long_description: '',
-      how_to_use: '',
-      benefits: [],
-      ingredients: [],
-      image:
-        'https://test.supabase.co/storage/v1/object/public/product-images/products/2-hair-oil.jpg',
-      rating: 4.7,
-      reviews: 0,
-      sort_order: 1,
-      published: true,
-    },
-  ],
+  rows: initialRows(),
   nextId: 3,
   authed: false,
   failWrite: false,
@@ -180,7 +184,7 @@ async function login() {
 // ======================================================================
 describe('dashboard', () => {
   beforeEach(async () => {
-    state.rows = state.rows.slice(0, 2).map((r) => ({ ...r }))
+    state.rows = initialRows()
     state.nextId = 3
     state.authed = false
     state.failWrite = false
@@ -400,6 +404,39 @@ describe('dashboard', () => {
     expect(state.calls).toContain('updateProduct')
     expect(dbRow('Editable').price).toBe(599)
     expect(rowNamed('Editable').textContent).toContain('599')
+  })
+
+  it('keeps a product in its original position when edited', async () => {
+    await login()
+    const before = dbRow('Herbal Hair Oil').sort_order
+
+    await click(
+      [...rowNamed('Herbal Hair Oil').querySelectorAll('button')].find(
+        (b) => b.getAttribute('title') === 'Edit'
+      )
+    )
+    const form = lastForm()
+    await type(form.querySelector('input[placeholder="350"]'), '345')
+    await submit(form)
+
+    // Editing must not append the product to the end of the catalog.
+    expect(dbRow('Herbal Hair Oil').sort_order).toBe(before)
+    expect(dbRow('Herbal Hair Oil').price).toBe(345)
+  })
+
+  it('surfaces a readable error when the update is rejected', async () => {
+    await login()
+    await click(
+      [...rowNamed('Herbal Hair Oil').querySelectorAll('button')].find(
+        (b) => b.getAttribute('title') === 'Edit'
+      )
+    )
+    state.failWrite = true
+    await submit(lastForm())
+
+    expect(container.textContent).toContain('Update failed')
+    expect(dbRow('Herbal Hair Oil').price).toBe(329)
+    state.failWrite = false
   })
 
   it('surfaces a write failure without adding the row', async () => {

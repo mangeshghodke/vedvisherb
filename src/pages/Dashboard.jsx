@@ -203,7 +203,7 @@ export default function Dashboard() {
     }
   }
 
-  function toRecord() {
+  function toRecord(existing) {
     const f = { ...EMPTY, ...form }
     return {
       name: str(f.name),
@@ -219,14 +219,17 @@ export default function Dashboard() {
       image: str(f.image),
       rating: Number(f.rating) || 0,
       reviews: Number(f.reviews) || 0,
-      sortOrder: items.length,
-      published: true,
+      // Keep the existing position when editing; only new products get a slot
+      // at the end. Using items.length here reordered products on every save.
+      sortOrder: existing ? Number(existing.sortOrder) || 0 : items.length,
+      published: existing ? existing.published !== false : true,
     }
   }
 
   async function save(e) {
     e?.preventDefault()
-    const record = toRecord()
+    const original = editing !== 'new' ? items.find((p) => p.id === editing) : null
+    const record = toRecord(original)
     if (!record.name) {
       flash('Please enter a product name.', 'err')
       return
@@ -235,7 +238,7 @@ export default function Dashboard() {
     // A freshly picked file is still an in-memory data URL. Upload it only
     // now, so abandoning the form never leaves an orphan file in the bucket.
     const pendingUpload = record.image.startsWith('data:')
-    const previousImage = editing !== 'new' ? items.find((p) => p.id === editing)?.image : null
+    const previousImage = original?.image ?? null
 
     setBusy(true)
     try {
