@@ -15,7 +15,8 @@
     "seed:products": "node scripts/seed-products.mjs",
     "seed:sql": "node scripts/seed-products.mjs --sql",
     "test:seed": "node tests/validate-seed.mjs",
-    "images:migrate": "node scripts/migrate-images.mjs"
+    "images:migrate": "node scripts/migrate-images.mjs",
+    "icons": "node scripts/generate-icons.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.117.3",
